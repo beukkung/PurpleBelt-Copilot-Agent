@@ -1,0 +1,46 @@
+"""Verify the complete pinned Microsoft snapshot. Does not execute upstream code."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+
+
+def verify(root):
+    root = Path(root).resolve()
+    errors = []
+    try:
+        lock = json.loads((root / 'upstream.lock.json').read_text(encoding='utf-8'))
+    except (OSError, ValueError) as exc:
+        return {'errors': [str(exc)], 'checked': 0}
+    vendor = root / 'vendor/microsoft/skills-for-copilot-studio'
+    entries = lock.get('files', [])
+    if len(entries) != lock.get('file_count'):
+        errors.append('Manifest file_count mismatch')
+    expected = set()
+    for entry in entries:
+        name = entry['path']
+        path = (vendor / name).resolve()
+        if not path.is_relative_to(vendor.resolve()):
+            errors.append('Unsafe manifest path: ' + name)
+            continue
+        expected.add(name)
+        if not path.is_file() or path.is_symlink():
+            errors.append('Missing or symlink: ' + name)
+            continue
+        data = path.read_bytes()
+        blob = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+        if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256'] or blob != entry['git_blob_sha1']:
+            errors.append('Content mismatch: ' + name)
+    actual = {p.relative_to(vendor).as_posix() for p in vendor.rglob('*') if p.is_file()}
+    for name in sorted(actual - expected):
+        errors.append('Untracked upstream file: ' + name)
+    return {'errors': errors, 'checked': len(entries), 'commit': lock.get('commit')}
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
+    args = parser.parse_args()
+    result = verify(args.root)
+    print(json.dumps(result, indent=2))
+    raise SystemExit(1 if result['errors'] else 0)

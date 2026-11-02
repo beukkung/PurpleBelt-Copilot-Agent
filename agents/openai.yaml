@@ -1,0 +1,4 @@
+interface:
+  display_name: "Copilot Studio Builder"
+  short_description: "Build and verify Copilot Studio agents with GitHub Copilot"
+  default_prompt: "Use $copilot-studio-builder to build or improve this Copilot Studio agent."

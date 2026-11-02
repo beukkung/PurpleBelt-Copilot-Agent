@@ -1,0 +1,17 @@
+{
+  "harness": "unknown",
+  "orchestration": "unknown",
+  "targetChannel": "unknown",
+  "capabilities": [
+    {
+      "name": "sharepoint-read",
+      "state": "unknown",
+      "connectorClass": "standard-as-of-2026-11-02",
+      "identityMode": "unknown",
+      "evidence": null,
+      "policyCheck": "pending",
+      "runtimeCheck": "pending"
+    }
+  ],
+  "note": "Design example only; this is not a Studio import manifest."
+}
