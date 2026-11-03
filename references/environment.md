@@ -3,8 +3,10 @@
 ## Harness
 
 Detect the actual Studio harness independently from the coding assistant.
-The Microsoft snapshot targets standard agents, including classic and
-generative orchestration. Product names and availability change; use current
+The `skills-for-copilot-studio` snapshot targets Standard agents, including classic
+and generative orchestration. `copilot-studio-plugin` targets the modern
+Microsoft Copilot harness (formerly GitHub Copilot harness). Read
+`harness-routing.md` and only the matching operation toolkit. Product names and availability change; use current
 official docs and real exports for other harnesses. Read original `detect-mode`
 and `edit-agent` skills before editing settings. Treat unknown as unknown.
 

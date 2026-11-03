@@ -1,4 +1,4 @@
 interface:
-  display_name: "Copilot Studio Builder"
-  short_description: "Build and verify Copilot Studio agents with GitHub Copilot"
-  default_prompt: "Use $copilot-studio-builder to build or improve this Copilot Studio agent."
+  display_name: "PurpleBelt — Copilot Studio Builder"
+  short_description: "Turn business ideas into testable agents across two Studio harnesses"
+  default_prompt: "Use $copilot-studio-builder to inspect the actual harness and build one verifiable business outcome."

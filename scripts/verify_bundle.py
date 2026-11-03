@@ -5,26 +5,32 @@ import json
 from pathlib import Path
 
 
-def verify(root):
+def verify_snapshot(root, manifest, directory):
     root = Path(root).resolve()
     errors = []
     try:
-        lock = json.loads((root / 'upstream.lock.json').read_text(encoding='utf-8'))
+        lock = json.loads((root / manifest).read_text(encoding='utf-8'))
     except (OSError, ValueError) as exc:
         return {'errors': [str(exc)], 'checked': 0}
-    vendor = root / 'vendor/microsoft/skills-for-copilot-studio'
+    vendor = root / 'vendor/microsoft' / directory
     entries = lock.get('files', [])
     if len(entries) != lock.get('file_count'):
         errors.append('Manifest file_count mismatch')
     expected = set()
     for entry in entries:
         name = entry['path']
-        path = (vendor / name).resolve()
+        raw_path = vendor / name
+        path = raw_path.resolve()
         if not path.is_relative_to(vendor.resolve()):
             errors.append('Unsafe manifest path: ' + name)
             continue
         expected.add(name)
-        if not path.is_file() or path.is_symlink():
+        candidate = vendor
+        symlinked = candidate.is_symlink()
+        for part in Path(name).parts:
+            candidate = candidate / part
+            symlinked = symlinked or candidate.is_symlink()
+        if not path.is_file() or symlinked:
             errors.append('Missing or symlink: ' + name)
             continue
         data = path.read_bytes()
@@ -35,6 +41,21 @@ def verify(root):
     for name in sorted(actual - expected):
         errors.append('Untracked upstream file: ' + name)
     return {'errors': errors, 'checked': len(entries), 'commit': lock.get('commit')}
+
+
+def verify(root):
+    snapshots = {
+        name: verify_snapshot(root, manifest, name)
+        for name, manifest in (
+            ('skills-for-copilot-studio', 'upstream.lock.json'),
+            ('copilot-studio-plugin', 'upstream-agentic.lock.json'),
+        )
+    }
+    return {
+        'errors': [name + ': ' + error for name, report in snapshots.items() for error in report['errors']],
+        'checked': sum(report['checked'] for report in snapshots.values()),
+        'snapshots': snapshots,
+    }
 
 
 if __name__ == '__main__':

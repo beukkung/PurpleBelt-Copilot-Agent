@@ -1,0 +1,285 @@
+{
+  "repository": "https://github.com/microsoft/copilot-studio-plugin",
+  "commit": "4014ae689d1228d86cb3aaab938b1e66f8e2e10d",
+  "retrieved_at": "2026-11-03",
+  "license": "MIT",
+  "file_count": 46,
+  "files": [
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "bytes": 474,
+      "git_blob_sha1": "f9674410f31c5ac10e56f5272ec40d85f2fec864",
+      "sha256": "e8b950d68818d3dd506ea10ddc760db3b0d27419ab225184ee99793754c08609"
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "bytes": 279,
+      "git_blob_sha1": "64b97929a2457bb6822935226b5677d4e91064af",
+      "sha256": "26b0c07d2b6d235c81d3a92ecb3b796b5a91511f069a1e432d6f33067fa979a9"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 7454,
+      "git_blob_sha1": "d5a18deed8813c6c817c9090bf0443d7fad48a9d",
+      "sha256": "cbed134c8bc8b85079dd45fbeeab58a54b8b93746c7dabca21d512982320987d"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "bytes": 558,
+      "git_blob_sha1": "686e5e7a090b52f0db9acbe001915d0b9b06b06c",
+      "sha256": "9d45a586fce701502d173a7c10c71c8bd4f23e23d5a4a06e9d00eb57a9c11205"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 1233,
+      "git_blob_sha1": "d1b09eb97f0a89fb83687e79100de4836b502578",
+      "sha256": "05d2947f22838e382e9708c632ea1da126abbb9e2a581d368957018ae689557c"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1141,
+      "git_blob_sha1": "9e841e7a26e4eb057b24511e7b92d42b257a80e5",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1705,
+      "git_blob_sha1": "28f542259b8b0c655366fdd567220e214407000c",
+      "sha256": "60026084ee6ac8d9678d1dd56e3de79e2a3cee275954ea9bb3bd1d33b329069e"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 542,
+      "git_blob_sha1": "e751608fcd55622cc1f88f30833bffe3e0aed236",
+      "sha256": "b02bf4e236e9335b27298a77688c751d18ca7e6052873d0d3d29eda37d0a72fa"
+    },
+    {
+      "path": "SUPPORT.md",
+      "bytes": 1219,
+      "git_blob_sha1": "eaf439aecca04e3aa5a022e0bc0b8b088efef7f1",
+      "sha256": "066ceb3fa4646b998a91eea661b998afedf1eb5e023fab14cfb52888b21fe086"
+    },
+    {
+      "path": "agents/copilot-studio-architect.md",
+      "bytes": 23711,
+      "git_blob_sha1": "862ce84dd040a567b37aa0bdacd8a240d6bd503c",
+      "sha256": "ac91d817358d4cf999da5de09d4214945db68a5f0e5c555f85840b5651415829"
+    },
+    {
+      "path": "agents/copilot-studio-describer.md",
+      "bytes": 11329,
+      "git_blob_sha1": "dcfff9e530cd658a8c8a6ab9d3743c82e1a48bc2",
+      "sha256": "ececb6fecfaf6a8366bd3bc4c0df279d5f6abb06ba3f2fd17bcc3f9cb5c48c3a"
+    },
+    {
+      "path": "agents/copilot-studio-init.md",
+      "bytes": 4739,
+      "git_blob_sha1": "36c586b5551cd24df0e58ec9cf9a75b3233f7987",
+      "sha256": "4e7dc254050bf185c56ea3aa95acd73a878f32e31e5de9748a66934b1c25c09d"
+    },
+    {
+      "path": "agents/copilot-studio-manage.md",
+      "bytes": 10090,
+      "git_blob_sha1": "11bd1b1015b99e6d2a5ebcb94865ea33b4eeb636",
+      "sha256": "d8e2928a4695c8047c986e7c7d7ba7793db5d8b691fbc4f9a27c09bbb6d7a8fa"
+    },
+    {
+      "path": "commands/chat.md",
+      "bytes": 12353,
+      "git_blob_sha1": "d4dbbbde8fca2bc1b70a2ba109b6bd31ec3d016a",
+      "sha256": "67b4daa248480dcec1b58ce45711b2e441378a8f7b082f51826cf4786d4e3e2b"
+    },
+    {
+      "path": "commands/migrate.md",
+      "bytes": 26612,
+      "git_blob_sha1": "cf3e2293a01a85fc733bf1133cac169e8eacc325",
+      "sha256": "ac17831b8cb28d5f5d0860c4ab43cd818fd1125d29087b47b9c6e87229969c46"
+    },
+    {
+      "path": "hooks/hooks.json",
+      "bytes": 454,
+      "git_blob_sha1": "bff4983a3bbae98cc679011af77f27c4519c858e",
+      "sha256": "e716bd4ae4199ed20144012e8ca45c18ab658a3c51932988995552ae6d749c4b"
+    },
+    {
+      "path": "hooks/set-env-vars.js",
+      "bytes": 1705,
+      "git_blob_sha1": "e80550c2439819ea411e770afa4b58d895160209",
+      "sha256": "5cd1121fb4179aebefbe90f7b1f903a1aae4317acab1be8a52fe6246ee8af19c"
+    },
+    {
+      "path": "reference/knowledge-schema.md",
+      "bytes": 12725,
+      "git_blob_sha1": "7da3b0d5c7b6d6f305b5235018bd9f929c0ec562",
+      "sha256": "c26d60f16625a4cbf7be3c556cc91b7418798c0724ff372bf6370e4056e7fbae"
+    },
+    {
+      "path": "reference/skill-schema.md",
+      "bytes": 12982,
+      "git_blob_sha1": "4036ca22a4b407440894cf5ced6478fd51af8296",
+      "sha256": "6e76f5f0ba29f9eb64dafb7f939c6b005f996e6bc68957c3310bf1bd0fbcb85a"
+    },
+    {
+      "path": "scripts/add-skill.js",
+      "bytes": 37549,
+      "git_blob_sha1": "5f2ee1d612a42bc53de66eecf627ccdda25e5f17",
+      "sha256": "67f6f86bc96ebc4d4544c6ee5e714a0f31db160dc0c75d22e1db10b8ed4125f0"
+    },
+    {
+      "path": "scripts/chat-with-agent.bundle.js",
+      "bytes": 1513140,
+      "git_blob_sha1": "8f26a5e49157421eebbcbe86076b0d53a92a539e",
+      "sha256": "f36319426a6f26f03017ba515b569a172bdb388b636d0827588cac37f2c27ef1"
+    },
+    {
+      "path": "scripts/convert-actions-to-tools.js",
+      "bytes": 28725,
+      "git_blob_sha1": "9618228653ed3728020c2b1599e9ee52b9866599",
+      "sha256": "a9d0ce2ae777a3d2511c70c02fc65b15e422ee48ef6cdc7ee1bcf5fca5906d33"
+    },
+    {
+      "path": "scripts/native-deps.json",
+      "bytes": 383,
+      "git_blob_sha1": "e6c76b0f6087cf79fd3e66b26a4069f1faa94844",
+      "sha256": "0d559c158c571e9c0defd40851fb39d92fb5937bb0213497e73d3f35433441f0"
+    },
+    {
+      "path": "scripts/package-lock.json",
+      "bytes": 33092,
+      "git_blob_sha1": "e37ce63ff13627b51bab9f73507fbc52d0d81c32",
+      "sha256": "7767ef6e1d7f4bcc74d8790119cf718e6c3e737c0924f584947a127e3409b0c3"
+    },
+    {
+      "path": "scripts/package.json",
+      "bytes": 2570,
+      "git_blob_sha1": "c4b5981b938a3ce83666bd9a9a95aa302b3e1085",
+      "sha256": "a5851425e7ed9a0ca85e74d4c74f1394470b0508bbaaaa877b534a981afd6fd6"
+    },
+    {
+      "path": "scripts/src/chat-with-agent.js",
+      "bytes": 30287,
+      "git_blob_sha1": "0c7265f3429c27012da5486aadd62ff50c9ecb84",
+      "sha256": "a0dc5b80ad81a903fe5f9750a99099c4c21290fd6bdf753f26b9d7d44245f294"
+    },
+    {
+      "path": "scripts/src/msal-cache.js",
+      "bytes": 3561,
+      "git_blob_sha1": "12784c4ae76a7a00922a2fd763970247ff52b4d1",
+      "sha256": "6c46120f2401794d91e515c6ab2f603459514ec164c6fc933d37240dca72f6a7"
+    },
+    {
+      "path": "scripts/src/response-format.js",
+      "bytes": 6213,
+      "git_blob_sha1": "f895b0f8ffffb9d484059cd8e3d4b968121094aa",
+      "sha256": "94d59134e65107ece07f65237e4a1f533417d16b01a617c78e75c48d8ce1a909"
+    },
+    {
+      "path": "scripts/src/secure-msal-cache.js",
+      "bytes": 856,
+      "git_blob_sha1": "0f193b0e9bafe77bfe1dacf97b3f14fa4f59c1e1",
+      "sha256": "e23c34f2580559dd91dd94d7c7276ed03c4c85175471b2cb447579e389816e79"
+    },
+    {
+      "path": "scripts/src/terminal-render.js",
+      "bytes": 4781,
+      "git_blob_sha1": "a3f1aae0c035c0eaa863c20f85451bf80338d72f",
+      "sha256": "0a7bb0ef4faf24417c8edab3c64d02a0b52dfc246dc05ffc8af3f6d23f82664d"
+    },
+    {
+      "path": "scripts/src/verify-knowledge-access.js",
+      "bytes": 24023,
+      "git_blob_sha1": "04a18e70625b8ee73a8ec547be3a1da4b64b82e2",
+      "sha256": "c998f9fb5fbba0c3d06c5efe9cfb19be5ca2f98a53111b44919b1b0a16fbb005"
+    },
+    {
+      "path": "scripts/test/add-skill.test.js",
+      "bytes": 24347,
+      "git_blob_sha1": "c9f98ebec784e7f26d867d48ff7fae754f572ed0",
+      "sha256": "613f970a25db1cfc20c8199e4dad2c611d4230380cd4bf35d05c08254d4254a9"
+    },
+    {
+      "path": "scripts/test/create-agent-contract.test.js",
+      "bytes": 4337,
+      "git_blob_sha1": "21ba581fe8ecdc0815a20de68b96e882a0718297",
+      "sha256": "2546d2bbc512132c07633d1cd68d880218fa4fb32b1d017cecdf73ef7f8d0b39"
+    },
+    {
+      "path": "scripts/test/delete-agent-contract.test.js",
+      "bytes": 3791,
+      "git_blob_sha1": "0890bb1a88fe9684c4d5e5a9592edf6c7c71f231",
+      "sha256": "c99081a81f158e30d6585009ffe805f71d33490dc6b7cd283e38d02b74b8cbcc"
+    },
+    {
+      "path": "scripts/test/publish-agent-contract.test.js",
+      "bytes": 2161,
+      "git_blob_sha1": "6f69c6359fad33ea09870ebf2f8a9114b1a9b723",
+      "sha256": "ee93fea99cc01b9c6dc3e31f048bf9262a7433410dfe2b339343ae7f0123f29f"
+    },
+    {
+      "path": "scripts/test/push-agent-contract.test.js",
+      "bytes": 2036,
+      "git_blob_sha1": "d5ba3f68e99f4e4a2eb9a4784330d9e04534fab8",
+      "sha256": "d0b1a4d225e77e3c07e0d272be56f27529fc6f0fa3053c9a5d77327e269d1956"
+    },
+    {
+      "path": "scripts/test/verify-knowledge-access.test.js",
+      "bytes": 3778,
+      "git_blob_sha1": "eea43baeeb7fd685123c21ea20e783a73bb2e0ae",
+      "sha256": "84a7453a1d6db2e351c52802cc67c7b7107b526c90caad80a64dee2dfd2cf55f"
+    },
+    {
+      "path": "scripts/verify-knowledge-access.bundle.js",
+      "bytes": 640425,
+      "git_blob_sha1": "59eca03b3eec924a8bceaf4d4f56719a61ee9e43",
+      "sha256": "3b905454702ddf01e921d6aa7140229c7e2a5bd4dbafd9218133f238cedf4a88"
+    },
+    {
+      "path": "skills/add-knowledge/SKILL.md",
+      "bytes": 9979,
+      "git_blob_sha1": "008efce01085f9b083250a9ee69b6c42588fbcb4",
+      "sha256": "0e09ed4f5f2ee7c4340ec20e4e37234f3a645389ee6b23fbd786a30d0593ae6c"
+    },
+    {
+      "path": "skills/add-skill/SKILL.md",
+      "bytes": 11586,
+      "git_blob_sha1": "dbd8e6a70885680b3e30092f6498ebacaa3d4b24",
+      "sha256": "f21629928e7cefbb30ed4267d9a92db94cc59b335ea9ae45f560056ccbec7976"
+    },
+    {
+      "path": "skills/clone-agent/SKILL.md",
+      "bytes": 6763,
+      "git_blob_sha1": "da6a794dbd42e5a6d990016ad70a59aaca530339",
+      "sha256": "10912efcd24402ed1ea32ebe56d46729f48621ccf620e53413d5a513681889b9"
+    },
+    {
+      "path": "skills/create-agent/SKILL.md",
+      "bytes": 15055,
+      "git_blob_sha1": "83becf2879b2224e78fb180cc43d7fa40977d0fc",
+      "sha256": "31b6f66fa73b89f344427cd52f0aa644c2dcaa11d5b28dbeedc103d858704a4d"
+    },
+    {
+      "path": "skills/delete-agent/SKILL.md",
+      "bytes": 7507,
+      "git_blob_sha1": "d117c07fa151c31d012d4dbc8c98e428d4af5456",
+      "sha256": "94686809f7382a3d3ad76e345a313653493f52dd40fc3a53c6e60589cfea109e"
+    },
+    {
+      "path": "skills/publish-agent/SKILL.md",
+      "bytes": 6563,
+      "git_blob_sha1": "ddb0aefb2737bdcf3454ef59b6cac6e474699647",
+      "sha256": "f56b32693f8835e18b67ca82b6627ed9796a4046aad186644cb21bd32a5a81cd"
+    },
+    {
+      "path": "skills/pull-agent/SKILL.md",
+      "bytes": 5345,
+      "git_blob_sha1": "9351ac3d4633862e5d784589715f03c80137435b",
+      "sha256": "15b4ff8487c9ca18c332b9835cacf2e00ae0d9156fa735a3a0786f2c6b6a4bfa"
+    },
+    {
+      "path": "skills/push-agent/SKILL.md",
+      "bytes": 6321,
+      "git_blob_sha1": "92ef790dc71d535d9f0d73f7ef2fc1ba8d0c5d94",
+      "sha256": "b1269ba90173b858aa34985bdc1feea1dd9ed79efadbc0b4c30a6c6ca34fa89c"
+    }
+  ]
+}

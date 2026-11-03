@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" role="img" aria-labelledby="title desc">
+<title id="title">PurpleBelt</title><desc id="desc">From business idea to a testable Copilot Studio agent. Two harness paths, one outcome-driven workflow.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#141126"/><stop offset="1" stop-color="#24203d"/></linearGradient><linearGradient id="accent"><stop stop-color="#c4b5fd"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a78bfa" stroke-opacity=".07"/></pattern></defs>
+<rect width="1280" height="440" rx="24" fill="url(#bg)"/><rect width="1280" height="440" rx="24" fill="url(#grid)"/>
+<path d="M1040 0L1280 240V0Z" fill="#7c3aed" opacity=".12"/><path d="M1100 440L1280 260V440Z" fill="#a78bfa" opacity=".1"/>
+<rect x="64" y="57" width="38" height="10" rx="4" fill="url(#accent)"/><rect x="79" y="49" width="10" height="26" rx="3" fill="#ddd6fe"/>
+<text x="116" y="68" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3">COPILOT STUDIO BUILDER</text>
+<text x="60" y="169" fill="#faf9ff" font-family="Arial, sans-serif" font-size="84" font-weight="700" letter-spacing="-3">PurpleBelt<tspan fill="#a78bfa">.</tspan></text>
+<text x="64" y="218" fill="#e1dcef" font-family="Arial, sans-serif" font-size="28">From business idea to a testable agent.</text>
+<text x="65" y="256" fill="#a9a3bd" font-family="Arial, sans-serif" font-size="18">Built for GitHub Copilot. Grounded in Microsoft toolkits.</text>
+<g font-family="Arial, sans-serif"><rect x="64" y="308" width="360" height="77" rx="12" fill="#ffffff" fill-opacity=".04" stroke="#a78bfa" stroke-opacity=".22"/><text x="84" y="337" fill="#c4b5fd" font-size="12" font-weight="700" letter-spacing="2">01 / DESIGN</text><text x="84" y="365" fill="#f2effa" font-size="18">Start with the business outcome</text>
+<rect x="440" y="308" width="360" height="77" rx="12" fill="#ffffff" fill-opacity=".04" stroke="#a78bfa" stroke-opacity=".22"/><text x="460" y="337" fill="#c4b5fd" font-size="12" font-weight="700" letter-spacing="2">02 / BUILD</text><text x="460" y="365" fill="#f2effa" font-size="18">Choose the right harness</text>
+<rect x="816" y="308" width="400" height="77" rx="12" fill="#ffffff" fill-opacity=".04" stroke="#a78bfa" stroke-opacity=".22"/><text x="836" y="337" fill="#c4b5fd" font-size="12" font-weight="700" letter-spacing="2">03 / VERIFY</text><text x="836" y="365" fill="#f2effa" font-size="18">Show what actually works</text></g>
+</svg>

@@ -1,8 +1,13 @@
 # Sources
 
-Reviewed 2026-11-02. Recheck official documentation for changing platform details.
+Reviewed 2026-11-03. Recheck official documentation for changing platform details.
 
 ## Official
+
+- https://github.com/microsoft/copilot-studio-plugin — complete unmodified MIT
+  snapshot; exact commit and hashes in `../upstream-agentic.lock.json`.
+- https://www.microsoft.com/en-us/copilot/blog/copilot-studio/the-github-copilot-harness-in-copilot-studio-is-now-the-microsoft-copilot-harness/
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/choose-harness
 
 - https://github.com/microsoft/skills-for-copilot-studio — complete unmodified MIT
   snapshot; exact commit and every hash are in `../upstream.lock.json`.

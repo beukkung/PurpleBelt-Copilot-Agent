@@ -2,6 +2,7 @@ import importlib.util
 import json
 import tempfile
 import unittest
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -108,12 +109,15 @@ class InstallerTests(unittest.TestCase):
             main = target / '.github/skills/copilot-studio-builder'
             self.assertTrue((main / 'SKILL.md').exists())
             self.assertTrue((main / 'vendor/microsoft/skills-for-copilot-studio/scripts/schema-lookup.bundle.js').exists())
-            skill_count = len(list((ROOT / 'vendor/microsoft/skills-for-copilot-studio/skills').glob('*/SKILL.md')))
+            skill_count = sum(len(list((ROOT / 'vendor/microsoft' / repo / 'skills').glob('*/SKILL.md'))) for repo in ('skills-for-copilot-studio', 'copilot-studio-plugin')) + 2
             self.assertEqual(len(result['wrappers']), skill_count)
             for name in result['wrappers']:
                 text = (target / '.github/skills' / name / 'SKILL.md').read_text()
                 self.assertIn('name: ' + name, text)
-                self.assertIn('original skill directory', text)
+                links = re.findall(r'`([^`]+\.md)`', text)
+                self.assertTrue(links)
+                for link in links:
+                    self.assertTrue((target / '.github/skills' / name / link).resolve().is_file(), link)
 
     def test_existing_user_files_are_never_overwritten(self):
         mod = load_script('install')

@@ -45,6 +45,7 @@ def inspect_workspace(root):
         'validation_level': 'static-preflight', 'tenant_verified': False,
         'blockers': [], 'warnings': [], 'files': [], 'connectors': [],
         'connection_metadata_present': False,
+        'harness': 'unknown', 'harness_evidence': [],
         'not_checked': ['Power-Fx semantics', 'Microsoft authoring schema', 'cross-file logical bindings', 'DLP', 'licensing', 'authentication', 'deployment', 'runtime effects'],
     }
     if not root.is_dir():
@@ -56,6 +57,8 @@ def inspect_workspace(root):
         return result
     connectors = set()
     agent_count = 0
+    modern = False
+    standard = False
     for path in sorted(root.rglob('*')):
         rel = path.relative_to(root)
         if path.is_symlink() or any(part in EXCLUDED for part in rel.parts) or not path.is_file():
@@ -77,10 +80,28 @@ def inspect_workspace(root):
             result['blockers'].append({'code': 'parse_error', 'file': rel.as_posix(), 'message': 'duplicate YAML key' if 'duplicate YAML key' in str(exc) else type(exc).__name__})
             continue
         kind = data.get('kind')
+        if path.name in {'settings.mcs.yml', 'settings.mcs.yaml'}:
+            configuration = data.get('configuration')
+            configuration = configuration if isinstance(configuration, dict) else {}
+            recognizer = configuration.get('recognizer')
+            markers = []
+            if isinstance(data.get('template'), str) and data['template'].startswith('cliagent-'):
+                markers.append('cliagent template')
+            if configuration.get('authoringModel') == 'CliCopilot':
+                markers.append('CliCopilot authoringModel')
+            if isinstance(recognizer, dict) and recognizer.get('kind') in {'CLIAgentRecognizer', 'CLICopilotRecognizer'}:
+                markers.append('CLI recognizer')
+            if markers:
+                modern = True
+                result['harness_evidence'].append({'file': rel.as_posix(), 'markers': markers})
+        if kind in {'GptComponentMetadata', 'AdaptiveDialog'}:
+            standard = True
+            result['harness_evidence'].append({'file': rel.as_posix(), 'markers': [kind]})
         if kind == 'GptComponentMetadata':
             agent_count += 1
         config_file = path.name in {'settings.mcs.yml', 'settings.mcs.yaml', 'connectionreferences.mcs.yml', 'connectionreferences.mcs.yaml'}
-        if is_mcs and not kind and not config_file:
+        metadata_sidecar = ('mcs.metadata' in data or isinstance(data.get('mcs'), dict) and 'metadata' in data['mcs']) and rel.parts[0] in {'behaviors', 'capabilities'}
+        if is_mcs and not kind and not config_file and not metadata_sidecar:
             result['warnings'].append({'code': 'no_root_kind', 'file': rel.as_posix()})
         ids = set()
         for node in walk(data):
@@ -100,7 +121,10 @@ def inspect_workspace(root):
         result['files'].append({'file': rel.as_posix(), 'kind': kind or ('configuration-yaml' if is_mcs else 'flow-json')})
     if not result['files']:
         result['blockers'].append({'code': 'no_native_files', 'message': 'Provide a cloned agent workspace, not the skill repository.'})
-    if not agent_count:
+    result['harness'] = 'conflict' if modern and standard else 'agentic' if modern else 'standard' if standard else 'unknown'
+    if modern and standard:
+        result['blockers'].append({'code': 'mixed_harness_markers', 'message': 'Separate source and target workspaces before selecting authoring schemas.'})
+    if not agent_count and not modern:
         result['warnings'].append({'code': 'no_agent_metadata', 'message': 'A component-only folder does not establish agent harness or configuration.'})
     result['connectors'] = sorted(connectors)
     return result

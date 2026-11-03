@@ -1,149 +1,135 @@
-# PurpleBelt — Copilot Studio Builder
+<p align="center">
+  <img src="docs/assets/purplebelt-banner.svg" alt="PurpleBelt — From business idea to a testable Copilot Studio agent" width="100%" />
+</p>
 
-**Skill สำหรับ GitHub Copilot เพื่อออกแบบ สร้าง แก้ไข ทดสอบ และเตรียม demo ของ Microsoft Copilot Studio agent**
+<p align="center">
+  <strong>ให้ GitHub Copilot ช่วยสร้าง Copilot Studio Agent อย่างเป็นระบบ</strong><br />
+  เริ่มจากโจทย์ธุรกิจ เลือก harness ให้ถูก แล้วทำหนึ่งงานให้จบพร้อมหลักฐานทดสอบ
+</p>
 
-รวม **Microsoft Skills for Copilot Studio แบบครบทั้ง repository** พร้อม skill หลักที่เพิ่ม Business/Product thinking, environment discovery, workflow reliability และ hackathon execution ใช้ได้กับหลายอุตสาหกรรมและหลายข้อจำกัด ไม่ผูกกับธนาคารใด
+<p align="center">
+  <a href="LICENSE"><img alt="License MIT" src="https://img.shields.io/badge/license-MIT-a78bfa?style=flat-square" /></a>
+  <img alt="Two harness paths" src="https://img.shields.io/badge/harness_paths-2-7c3aed?style=flat-square" />
+  <img alt="Works with GitHub Copilot" src="https://img.shields.io/badge/built_for-GitHub_Copilot-18181b?style=flat-square" />
+  <a href="docs/VALIDATION.md"><img alt="View verification record" src="https://img.shields.io/badge/evidence-view_checks-334155?style=flat-square" /></a>
+</p>
 
-## สิ่งที่รวมมา
+<p align="center">
+  <a href="#เริ่มใช้">เริ่มใช้</a> ·
+  <a href="docs/PLAYBOOK.md">ตัวอย่างคำสั่ง</a> ·
+  <a href="#เลือกเส้นทางให้ตรงกับ-agent">เลือก harness</a> ·
+  <a href="docs/VALIDATION.md">ทดสอบอะไรแล้ว</a>
+</p>
 
-| ส่วน | รายละเอียด |
+## Build less plumbing. Deliver more useful work.
+
+**PurpleBelt** เป็นชุด Agent Skills สำหรับ **GitHub Copilot ใน VS Code** ที่เสริมเครื่องมือ Microsoft ด้วย Business/Product thinking, บทเรียนจาก hackathon และวิธีตรวจว่างานสำเร็จจริง
+
+คุณบอกผลลัพธ์ที่ต้องการ → Copilot ตรวจโปรเจกต์และข้อจำกัด → เลือกเครื่องมือให้ตรง harness → สร้างงานชิ้นเล็กที่ทดสอบได้
+
+| อยากทำอะไร | PurpleBelt ช่วยอย่างไร |
 |---|---|
-| Builder skill ของเรา | Outcome -> Architecture -> Native artifacts -> Verification -> Demo |
-| Microsoft skills | 31 skills ครบจาก commit ที่ระบุใน lock file |
-| Specialist roles | Author, Manage, Test, Advisor ทั้ง 4 ไฟล์ต้นฉบับ |
-| Native references | Authoring schema, Adaptive Card schema, connector metadata |
-| Templates / patterns | 18 templates และ 15 patterns ต้นฉบับ |
-| Tools / evaluation | Bundled CLI, source, evaluation fixtures, scenarios และ tests |
-| Copilot discovery | 32 entry points: Builder + `mcs-*` สำหรับ Microsoft skills ทุกตัว |
-| Local utilities | Installer, read-only preflight, upstream integrity verification |
+| เปลี่ยนไอเดียเป็น Agent | แปลงโจทย์เป็น user journey, ข้อมูล, tools และเกณฑ์รับงาน |
+| Vibe code แล้วตามแก้ไม่จบ | อ่านไฟล์จริง ใช้ schema ให้ถูก และแก้เป็น diff ที่ตรวจได้ |
+| ทำงานให้ทัน hackathon | เริ่มจาก demo story และหนึ่ง journey ก่อนเพิ่มฟีเจอร์ |
+| ใช้ในองค์กรที่มีข้อจำกัด | แยก connector class, DLP, สิทธิ์ และ capacity ก่อนเลือกทางทำ |
+| Agent บอกสำเร็จทั้งที่งานไม่เกิด | ตรวจผลของแต่ละ action และสถานะจริง แยกจากข้อความที่โมเดลตอบ |
 
-ต้นฉบับ Microsoft อยู่ใน `vendor/microsoft/skills-for-copilot-studio/` แบบไม่แก้เนื้อหา มี MIT license เดิมและ SHA-256/Git blob hash ทุกไฟล์ใน [upstream.lock.json](upstream.lock.json)
+## เริ่มใช้
 
-เริ่มอ่าน [SKILL.md](SKILL.md) และ [สารบัญ Microsoft skills](references/upstream-catalog.md)
+สิ่งที่ต้องมี: GitHub Copilot ที่รองรับ Agent Skills และ Python 3.10+ สำหรับ utilities ของ PurpleBelt ส่วนการเชื่อม Copilot Studio ต้องมีเครื่องมือและสิทธิ์ตาม harness ด้านล่าง
 
-## เริ่มใช้ใน VS Code
-
-สิ่งที่ต้องมี: GitHub Copilot ที่รองรับ Agent Skills, Python 3.10+ สำหรับ utilities ของเรา และ Node.js 18+ สำหรับ toolkit ของ Microsoft การเชื่อม cloud ต้องมี Copilot Studio extension, สิทธิ์ environment และ license/capacity ตามงานนั้น
-
-```bash
+```powershell
 git clone https://github.com/beukkung/PurpleBelt-Copilot-Agent.git
 cd PurpleBelt-Copilot-Agent
-python -m pip install -r requirements.txt
-python scripts/verify_bundle.py
+py -m pip install -r requirements.txt
+py scripts/verify_bundle.py
+py scripts/install.py --target "C:\Projects\MyAgent" --harness standard
 ```
 
-เปิดโฟลเดอร์นี้ใน VS Code: `.github/skills/` มี discovery wrappers พร้อมแล้ว Copilot จะอ่านรายละเอียดจากต้นฉบับเฉพาะเวลาต้องใช้ หากต้องแก้ business agent ให้เปิด workspace ที่ clone จาก Studio และระบุ path ให้ชัดเจน
+เปลี่ยน `C:\Projects\MyAgent` เป็น **โฟลเดอร์โปรเจกต์ Agent จริง** แล้วเปิดโฟลเดอร์นั้นใน VS Code ตรวจว่า Copilot พบ skills ก่อนเริ่มใช้ บน macOS/Linux ใช้ `python3` และ path ของคุณ
 
-### ติดตั้งลงโปรเจกต์ agent ที่มีอยู่
-
-```bash
-python scripts/install.py --target "/absolute/path/to/my-agent-project"
-```
-
-ตัวติดตั้งคัดลอก bundle ที่ทำงานได้ด้วยตัวเองเข้า `.github/skills/copilot-studio-builder/` และสร้าง `mcs-*` wrappers 31 ตัวข้างกัน รองรับ path ที่มีช่องว่าง ไม่เขียนทับ skill เดิม และไม่เปิดใช้ hooks หรือ MCP โดยอัตโนมัติ
-
-ตัวอย่าง Windows PowerShell:
-
-```powershell
-py scripts/install.py --target "C:\Projects\My Copilot Agent"
-```
-
-### ใช้ส่วนตัวข้ามโปรเจกต์
-
-```bash
-python scripts/install.py --personal --target "$HOME/.copilot/skills"
-```
-
-PowerShell:
-
-```powershell
-py scripts/install.py --personal --target "$env:USERPROFILE\.copilot\skills"
-```
-
-ถ้ามีชื่อ skill ซ้ำ ตัวติดตั้งจะหยุดก่อนเปลี่ยนไฟล์ ให้เก็บสำรองและจัดการเวอร์ชันเดิมก่อน ใช้การตั้งค่า Skills/Customizations ของ Copilot ตรวจว่า skills ถูกค้นพบแล้ว การมีไฟล์ไม่ได้รับประกันว่าโมเดลจะเรียกทุกครั้ง
-
-## ตัวอย่างคำสั่งให้ Copilot
+พิมพ์ใน GitHub Copilot Chat:
 
 ```text
-Use copilot-studio-builder. ตรวจ agent workspace นี้ก่อน แล้วสร้าง
-customer service agent ที่ค้นคำตอบจาก SharePoint และเปิด request หลังผู้ใช้ยืนยัน
-เลือกวิธีตาม harness, connectors, license และ DLP ที่มีจริง
-ทำหนึ่งเส้นทางให้จบ พร้อม negative cases และแยกผล local กับ tenant tests
+ใช้ copilot-studio-builder ตรวจ workspace นี้และระบุ harness จากไฟล์จริง
+เป้าหมาย: สร้างตัวช่วยรับคำขอบริการภายใน
+ทำหนึ่งเส้นทางให้จบ พร้อมกรณีข้อมูลไม่ครบและ tool ล้มเหลว
+แสดง diff และรายงานแยก local checks, tenant tests และสิ่งที่ยังต้องตั้งค่า
 ```
 
-```text
-ใช้ copilot-studio-builder ตรวจ flow ที่บอกว่าบันทึกสำเร็จแม้หา record ไม่พบ
-อ่าน definition และ topic ที่เรียกมัน แก้ให้คืน status ตามผลจริง
-เพิ่มกรณี missing, duplicate, timeout และ partial success
-```
+ยังไม่มี workspace? เปิดโฟลเดอร์ PurpleBelt นี้และระบุว่าอยากสร้าง Agent ใหม่ พร้อม scenario และ environment ที่ได้รับอนุญาต ให้ Copilot ตรวจ prerequisites ก่อนสร้าง cloud resources
 
-```text
-Use copilot-studio-builder to prepare a six-hour hackathon build.
-Our goal is personalized news analysis. Identify approved data ingress,
-produce the smallest working slice, then add freshness evidence and a demo plan.
-```
+> มี skills เวอร์ชันเก่าอยู่แล้ว? Installer จะหยุดก่อนเขียนทับ ใช้ขั้นตอน [อัปเดตอย่างปลอดภัย](docs/PLAYBOOK.md#อัปเดตชุดเดิม) เพื่อเก็บ customizations ของคุณ
 
-เรียก Microsoft operation โดยตรงได้ผ่านชื่อเช่น `mcs-new-topic`, `mcs-add-action`, `mcs-add-adaptive-card`, `mcs-validate`, `mcs-manage-agent` และ `mcs-create-eval-set` โดยยังใช้กฎเรื่อง environment/evidence จาก Builder
+## เลือกเส้นทางให้ตรงกับ Agent
 
-## ขอบเขตที่ต้องเข้าใจ
+| | Standard | Microsoft Copilot harness |
+|---|---|---|
+| เหมาะกับ | Conversations, topics และกระบวนการที่กำหนดเส้นทางชัดเจน | งานที่ใช้ procedures, tools, files และ iterative orchestration |
+| ฐาน Microsoft | [skills-for-copilot-studio](https://github.com/microsoft/skills-for-copilot-studio) | [copilot-studio-plugin](https://github.com/microsoft/copilot-studio-plugin) |
+| เครื่องมือหลัก | Studio extension สำหรับ clone/push/pull; Node.js 18+ ตาม toolkit | PAC CLI 2.9.3+ ตาม plugin; ตรวจ help และ prerequisites ของแต่ละ operation |
+| ติดตั้ง discovery | `--harness standard` | `--harness agentic` |
+| เรียกโดยตรง | `copilot-studio-standard`, `mcs-*` | `copilot-studio-agentic`, `mcsa-*` |
 
-- Skill นี้ช่วย **GitHub Copilot พัฒนา agent** ไม่ได้เปลี่ยน runtime ของ agent
-- Toolkit Microsoft ที่รวมมาสำหรับ **standard harness**; harness อื่นต้องใช้ schema/plugin ที่ตรงกัน
-- การใช้ YAML หรือ import solution ไม่ข้าม DLP, permission, license หรือ endpoint restrictions
-- ไม่มี FlowStudio server/subscription, Azure hosting, API credentials หรือ premium entitlement แถมมา
-- ตัวติดตั้งไม่ได้ลงทะเบียน specialist role files เป็น custom-agent personas และไม่เปิดใช้ upstream hooks
-- ไฟล์ต้นฉบับบางส่วนเป็น experimental/version-specific ต้องตรวจคู่กับ diagnostics ปัจจุบัน
-- Patterns ที่เกี่ยวกับ chain-of-thought เก็บไว้เพื่อความครบของ snapshot แต่ Builder กำหนดให้ใช้ concise decision/evidence logging แทน private reasoning
+ใช้ `--harness all` เมื่อต้องการทั้งคู่ ตัวติดตั้งเก็บ source bundles ทั้งสองไว้เหมือนกัน แต่จำกัด discovery ตามตัวเลือกของคุณ Copilot ควรอ่านเฉพาะ harness และ operation ที่เกี่ยวข้อง
 
-## ตรวจอะไรได้บ้าง
+**GitHub Copilot ใน VS Code คือผู้ช่วยพัฒนา** ส่วน harness คือ runtime ของ Agent ใน Copilot Studio การมี Copilot หรือ extension ไม่ได้บอกว่า Agent ใช้ harness ไหน
 
-```bash
-python scripts/preflight.py "/path/to/actual-agent-workspace"
-```
+Microsoft ประกาศเปลี่ยนชื่อ GitHub Copilot harness เป็น **Microsoft Copilot harness** เมื่อ 28 ต.ค. 2026; repo ต้นฉบับยังมีชื่อ GHCP/MCS2 อยู่ [อ่านประกาศ](https://www.microsoft.com/en-us/copilot/blog/copilot-studio/the-github-copilot-harness-in-copilot-studio-is-now-the-microsoft-copilot-harness/)
 
-ตรวจ syntax ของ YAML/flow JSON, duplicate keys/node IDs, inventory และ heuristic บางอย่าง เช่น success flag เริ่มเป็น true โดยไม่อ่าน connection secrets
+## One outcome. A few good moves.
 
-**ผลนี้ไม่ใช่ Microsoft schema/Power Fx validation และไม่พิสูจน์ว่า agent ทำงานใน tenant แล้ว** Native LSP, authentication, deployment, DLP, tool effects และ target-channel rendering ต้องตรวจด้วยเครื่องมือ/สิทธิ์จริงตาม [Verification](references/verification.md)
+- **สร้าง:** อ่าน workspace → กำหนดผลลัพธ์ → สร้าง journey แรก → ตรวจ → sync → ทดสอบจริง
+- **แก้:** ทำให้เห็นปัญหาซ้ำ → ดู input/output จริง → แก้จุดที่เป็นสาเหตุ → ทดสอบกรณีเดิม
+- **แข่ง:** เล่า pain ให้ชัด → ทำผลลัพธ์ที่ demo ได้ → แสดงหลักฐาน → ซ้อมและเก็บ fallback
 
-เครื่องมือ schema lookup จาก Microsoft ใช้ได้แบบ local:
+ตัวอย่างพร้อมใช้: [สร้าง Agent / แก้ flow / เตรียม hackathon / ย้าย harness](docs/PLAYBOOK.md)
 
-```bash
-node vendor/microsoft/skills-for-copilot-studio/scripts/schema-lookup.bundle.js resolve AdaptiveDialog
-```
+## Trust the evidence
 
-อ่าน original `skills/validate/SKILL.md` และ `SETUP_GUIDE.md` ก่อน native diagnostics หรือ cloud operations; อย่าสมมติว่า local script ทุกตัวไม่มี dependencies เพิ่ม
+| มีให้แล้ว | ต้องตรวจใน environment ของคุณ |
+|---|---|
+| Toolkit Microsoft สองชุดแบบ pinned และเก็บ LICENSE เดิม | Authentication, permission, license/capacity และ DLP |
+| Installer เลือก harness และไม่เขียนทับ skill เดิม | Native CLI/extension dependencies และ service availability |
+| Static preflight ตรวจ syntax และ harness markers บางส่วน | Schema/Power Fx semantics, tool bindings และผลของ action จริง |
+| Local regression tests และ SHA-256/Git blob integrity checks | Cloud creation, migration, sync, publish และ published-channel UX |
 
-## Quality checks ของชุดนี้
+**สถานะ: development toolkit ที่มี local checks; ยังไม่ผ่านการรับรองการทำงานกับ tenant จริงจากโปรเจกต์นี้** ไม่มีคำอ้างว่าเร็วขึ้นกี่เท่าหรือรับประกันชนะ hackathon [ดูหลักฐานและข้อจำกัด](docs/VALIDATION.md)
+
+<details>
+<summary><strong>What's inside — เปิดดูรายละเอียด</strong></summary>
+
+- **39 original Microsoft skills:** 31 Standard + 8 modern, ไม่แก้ไฟล์ต้นฉบับ
+- **42 discovery entries** เมื่อใช้ `all`: Builder + 2 harness adapters + 39 operation wrappers
+- **8 original specialist guides** รวมทั้งสอง repo; installer ไม่ได้ลงทะเบียนเป็น custom-agent personas
+- **198 original upstream files** พร้อม commit และ hash ทุกไฟล์ใน lock manifests
+- Schema references, templates, patterns, helper scripts และชุดทดสอบต้นฉบับ
+- บทเรียนที่สังเคราะห์จาก public hackathon repos พร้อมระบุว่าอ่านหลักฐานประเภทใด
+- แยก `mcs-*` กับ `mcsa-*` เพื่อไม่ให้ชื่อ operation ชนกัน
+- Hooks, plugin commands และ telemetry ต้นฉบับไม่ถูกเปิดใช้อัตโนมัติ
+
+[Skill หลัก](SKILL.md) · [Toolkit catalog](references/upstream-catalog.md) · [Hackathon patterns](references/hackathon.md) · [Sources](references/sources.md)
+
+</details>
+
+<details>
+<summary><strong>ตรวจชุดเครื่องมือด้วยตัวเอง</strong></summary>
 
 ```bash
 python -m unittest discover -s tests -v
 python scripts/verify_bundle.py
+python scripts/preflight.py "/path/to/actual-agent-workspace"
 ```
 
-ทดสอบ installer, การไม่เขียนทับไฟล์เดิม, discovery wrappers, YAML errors, ขอบเขต static checks, การไม่อ่าน connection secrets และการตรวจไฟล์ต้นฉบับถูกแก้ ไม่ใช่ live certification ของ Copilot Studio tenant
+Preflight เป็น read-only heuristics ไม่ใช่ native schema/Power Fx/DLP validation และไม่อ่าน `.mcs/conn.json` ยังไม่มี tested Solution ZIP builder หรือ full validator สำหรับ unpacked solution components
 
-## โครงสร้าง
+ต้นฉบับ Standard เป็น experimental research project ส่วน modern plugin เป็น work in progress การอยู่ใน Microsoft GitHub ไม่ได้หมายถึง supported product หรือสิทธิ์ใช้งาน cloud [Attribution](NOTICE.md)
 
-```text
-SKILL.md                 Builder workflow
-references/              Architecture, authoring, data, flows, verification, demo
-scripts/                 Installer, preflight, integrity checker
-assets/                  Synthetic design examples and acceptance cases
-vendor/microsoft/        Complete pinned Microsoft toolkit (152 files)
-.github/skills/          Copilot discovery entries
-tests/                   Local tooling regression tests
-upstream.lock.json       Original commit and every file hash
-NOTICE.md                Attribution and integration boundaries
-```
+</details>
 
-## อัปเดต Microsoft toolkit
+---
 
-Snapshot นี้ pin ที่ `9c42d3a612c6e06389b6e5b4eed579aaed1a8b63` วันที่ตรวจ 2026-11-02 ไม่มี auto-update ให้ review diff/license, สร้าง lock file ใหม่จาก commit ที่เลือก, regenerate catalog/wrappers และรันทดสอบก่อนเปลี่ยนเวอร์ชัน อย่าแก้ไฟล์ vendor แล้วใช้ lock เดิม
+Built by **[beukkung](https://github.com/beukkung)** · Independent integration · [MIT](LICENSE)
 
-## Sources and license
-
-Microsoft original: https://github.com/microsoft/skills-for-copilot-studio
-
-[Sources and inspected reference builds](references/sources.md) · [Attribution](NOTICE.md) · [MIT](LICENSE)
-
-Independent integration by beukkung. No Microsoft endorsement. No private business data or credentials are included.
+**A useful agent is measured by the work it completes.**

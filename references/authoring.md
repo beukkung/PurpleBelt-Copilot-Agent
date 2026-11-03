@@ -1,4 +1,7 @@
-# Authoring and toolkit routing
+# Standard authoring and toolkit routing
+
+This operation map is for Standard agents. Read `harness-routing.md` first;
+modern CLI-agents use `harness-agentic.md` and the separate modern toolkit.
 
 ## Actual files first
 

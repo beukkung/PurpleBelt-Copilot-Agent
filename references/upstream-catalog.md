@@ -1,8 +1,8 @@
-# Complete pinned Microsoft toolkit
+# Pinned Microsoft toolkits
 
 Commit: `9c42d3a612c6e06389b6e5b4eed579aaed1a8b63`. Full originals remain unchanged.
 
-## Skills
+## Standard skills
 
 | Discovery name | Original instructions | Description |
 |---|---|---|
@@ -57,3 +57,33 @@ Commit: `9c42d3a612c6e06389b6e5b4eed579aaed1a8b63`. Full originals remain unchan
 - README, SETUP_GUIDE, LICENSE, SECURITY, CONTRIBUTING and release notes are retained.
 
 Read original operation instructions, not just these descriptions. The four specialist roles are not automatically installed as Copilot custom-agent personas.
+
+## Microsoft Copilot harness toolkit
+
+Original: `vendor/microsoft/copilot-studio-plugin/`
+
+Pinned commit: `4014ae689d1228d86cb3aaab938b1e66f8e2e10d`. All 46 files remain
+unmodified; see `../upstream-agentic.lock.json`. Read `harness-agentic.md` first.
+
+| Discovery name | Original instructions |
+|---|---|
+| `mcsa-add-knowledge` | [add-knowledge](../vendor/microsoft/copilot-studio-plugin/skills/add-knowledge/SKILL.md) |
+| `mcsa-add-skill` | [add-skill](../vendor/microsoft/copilot-studio-plugin/skills/add-skill/SKILL.md) |
+| `mcsa-clone-agent` | [clone-agent](../vendor/microsoft/copilot-studio-plugin/skills/clone-agent/SKILL.md) |
+| `mcsa-create-agent` | [create-agent](../vendor/microsoft/copilot-studio-plugin/skills/create-agent/SKILL.md) |
+| `mcsa-delete-agent` | [delete-agent](../vendor/microsoft/copilot-studio-plugin/skills/delete-agent/SKILL.md) |
+| `mcsa-publish-agent` | [publish-agent](../vendor/microsoft/copilot-studio-plugin/skills/publish-agent/SKILL.md) |
+| `mcsa-pull-agent` | [pull-agent](../vendor/microsoft/copilot-studio-plugin/skills/pull-agent/SKILL.md) |
+| `mcsa-push-agent` | [push-agent](../vendor/microsoft/copilot-studio-plugin/skills/push-agent/SKILL.md) |
+
+The four original agent guides are Architect, Describer, Init and Manage.
+The `commands/` directory includes chat and migration workflows. These are
+references, not automatically registered Copilot custom agents/slash commands.
+Shared authoritative references document runtime skill and knowledge schemas.
+Helpers include skill import, action-to-tool conversion and knowledge-access
+checks; their local tests do not establish live tenant behavior.
+
+Discovery totals: **42 entries** with `all` (1 Builder + 2 harness adapters +
+31 Standard operation wrappers + 8 modern operation wrappers). `standard`
+installs 33; `agentic` installs 10. Both source snapshots remain on disk, loaded
+on demand. Hook files remain inactive.

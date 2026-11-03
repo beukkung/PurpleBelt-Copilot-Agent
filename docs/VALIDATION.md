@@ -52,3 +52,61 @@ See Microsoft's original SETUP_GUIDE before configuring native dependencies.
 
 Hash integrity and local regression success do not certify every upstream
 pattern, plugin hook, API, optional native package or live workflow.
+
+## Dual-harness update — 2026-11-03
+
+Added the complete modern `microsoft/copilot-studio-plugin` snapshot at
+`4014ae689d1228d86cb3aaab938b1e66f8e2e10d` (46 files), without modifying originals.
+The existing Standard snapshot remains pinned and unchanged (152 files).
+
+### Checks actually run for this update
+
+- **17/17 PurpleBelt Python tests passed:** prior regression cases plus modern
+  settings/metadata-sidecar recognition, conflicting/unknown markers, selected
+  discovery profiles, valid installed reference paths, second-bundle integrity,
+  nested recognizer detection, symlink rejection and incomplete-toolkit refusal.
+  New-feature cases failed against the baseline before the implementation changed.
+- **198/198 upstream files matched** SHA-256, byte length and Git blob SHA-1.
+- **69/69 modern upstream Node tests passed** after installing its locked package
+  dependencies into a separate test directory with install scripts disabled.
+  This includes real local skill-import fixture operations and source-contract
+  tests. Initial runs without dependencies failed to load `js-yaml` and
+  `@azure/msal-node`; dependency setup resolved those failures. No tenant used.
+- Standard upstream Node regression files passed (runner reports 14 tests;
+  URL parser also reports its own 15 assertions). Standard Python path suite:
+  **10/10 passed**. None is a connected-platform test.
+- Skill frontmatter validation passed. Checked 66 relative Markdown file links,
+  42 discovery entries and their referenced files; no broken targets found.
+- Rendered and visually inspected the new SVG banner. Reviewed Markdown structure;
+  the actual GitHub page rendering was not browser-tested in this update.
+
+The bundled helper tests do not certify every build target, dependency or native
+command. In particular, no whole-plugin build, PAC CLI execution or LSP execution
+was performed for the modern harness. The source plugin is WIP.
+
+### Skill application review
+
+A fresh-context baseline without PurpleBelt already separated deterministic
+refund calculations and deployment evidence appropriately; no speed/quality gain
+is claimed. A fresh-context application of the updated skill correctly selected
+the modern toolkit, procedure schema, deterministic tool, sync and publish paths.
+It found guide conflicts: published-only chat versus draft testing, migration-only
+architect prerequisites, host slash-command references, deterministic calculation
+placement and no-op publish readiness. The adapter now explicitly resolves those
+issues while keeping the original Microsoft files unchanged. Follow-up review confirmed the corrected workflow and found three tooling issues:
+recognizer nesting, symlink rejection after resolution, and incomplete inner
+toolkit acceptance. All were reproduced with failing tests, fixed, and rechecked
+by the reviewer: **9 focused regressions passed**. The full PurpleBelt suite
+passed **21/21** afterward.
+
+### Automation added; tenant gates remain pending
+
+The GitHub Actions workflow defines Linux/Windows bundle checks and modern helper
+checks with dependencies outside the pinned tree. Workflow configuration is not
+proof that either hosted runner has passed; inspect actual Actions results.
+`.gitattributes` preserves upstream bytes on Windows to avoid line-ending drift.
+
+Still unverified: actual tenant creation, authentication, native schema acceptance,
+cloud sync, runtime skills, migrated behavior, publication and target-channel UX.
+No Solution ZIP builder or complete unpacked-solution validator was added. The
+new README describes available tooling, not guaranteed deployed outcomes.

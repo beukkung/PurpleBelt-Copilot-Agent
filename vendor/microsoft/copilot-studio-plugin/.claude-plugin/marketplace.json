@@ -1,0 +1,17 @@
+{
+  "name": "copilot-studio-plugin",
+  "owner": {
+    "name": "Microsoft Copilot Studio CAT Team"
+  },
+  "metadata": {
+    "description": "Microsoft Copilot Studio plugins for AI coding agents"
+  },
+  "plugins": [
+    {
+      "name": "mcs-assistant",
+      "description": "Microsoft Copilot Studio new orchestration YAML authoring toolkit. Create, edit, validate, and test Copilot Studio agents using YAML files.",
+      "version": "1.0.2",
+      "source": "./"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ description: Use when a GitHub Copilot user needs to design, build, edit, debug,
 # Copilot Studio Builder
 
 Turn a business outcome into the smallest working, verifiable agent. Work in
-the user's language. Use the full pinned Microsoft toolkit for platform detail
+the user's language. Use the matching pinned Microsoft toolkit for platform detail
 and this skill for architecture, integration, outcome contracts and delivery.
 
 This is a development skill for GitHub Copilot, not a Copilot Studio runtime
@@ -20,6 +20,8 @@ separate systems. Installation grants no tenant access or licenses.
    files and references before choosing native paths. Preserve the existing
    `.mcs.yml` / `.mcs.yaml` format, IDs, metadata and user edits.
 3. Detect harness and orchestration from metadata, UI or a trusted export.
+   Read [Harness routing](references/harness-routing.md), then only the matching
+   [Standard](references/harness-standard.md) or [agentic](references/harness-agentic.md) guide.
    Record unknown when unavailable. Copilot in VS Code does not imply the
    business agent uses the GitHub Copilot harness.
 4. Make a capability ledger: allowed/blocked/unknown, evidence, license class,
@@ -27,10 +29,12 @@ separate systems. Installation grants no tenant access or licenses.
    classification, policy, authentication and capacity separately.
 5. Choose the mode below. Continue reversible local work with explicit assumptions;
    ask only for information that blocks a dependent action.
-6. For a new standard agent, create a minimal Studio agent and clone through the
+6. For a new Standard agent, create a minimal Studio agent and clone through the
    supported extension, or use a verified toolkit creation path. Without a real
    export, produce design/contracts and label native drafts unbound. Never
    fabricate component IDs, operation IDs, connection GUIDs or import readiness.
+   For a modern CLI-agent, use the pinned `create-agent` workflow after verifying
+   PAC prerequisites and the exact target. Native init creates cloud resources.
 
 | Mode | Entry condition | Deliverable |
 |---|---|---|
@@ -48,8 +52,11 @@ especially on Windows or in paths containing spaces.
 
 | Work | Read |
 |---|---|
+| Harness selection | [Routing](references/harness-routing.md) |
+| Standard native workflow | [Standard](references/harness-standard.md) |
+| Modern skills/tools/PAC workflow | [Agentic](references/harness-agentic.md) |
 | Harness, policy, capabilities | [Environment](references/environment.md) |
-| YAML, topics, tools, cards, CLI | [Authoring](references/authoring.md) |
+| Standard YAML, topics, tools, cards, CLI | [Authoring](references/authoring.md) |
 | Flow contracts, writes, failures | [Workflow engineering](references/workflows.md) |
 | RAG, personalization, live data | [Data and knowledge](references/data.md) |
 | Diagnosis and test evidence | [Verification](references/verification.md) |
@@ -57,27 +64,29 @@ especially on Windows or in paths containing spaces.
 | Every Microsoft skill and role | [Toolkit catalog](references/upstream-catalog.md) |
 | Provenance and official sources | [Sources](references/sources.md) |
 
-## Integrate the Microsoft toolkit
+## Integrate the matching Microsoft toolkit
 
-The complete original snapshot is under
-`vendor/microsoft/skills-for-copilot-studio/`; call its absolute path UPSTREAM.
-Read the relevant original `skills/<operation>/SKILL.md` before native edits.
-For complex authoring, also read `agents/copilot-studio-author.md`. Use its
-schema lookup, connector lookup, templates and supported management tooling.
+Two complete, unmodified MIT snapshots live under `vendor/microsoft/`:
 
-The toolkit targets standard-harness agents. For another harness, use only
-transferable planning/verification guidance and inspect its own current schema
-and plugin. Never apply standard topics to another runtime by guess.
+| Agent runtime | Original toolkit | Discovery prefix |
+|---|---|---|
+| Standard | `skills-for-copilot-studio/` | `mcs-*` |
+| Microsoft Copilot, formerly GitHub Copilot | `copilot-studio-plugin/` | `mcsa-*` |
 
-The installer generates `mcs-*` discovery wrappers. Interpret upstream
-`${CLAUDE_SKILL_DIR}` as the absolute ORIGINAL skill folder under
-`UPSTREAM/skills/`, not a guaranteed Copilot environment variable. Resolve original
-relative references from there. Check CLI `--help` and installed prerequisites.
+Use `copilot-studio-standard` or `copilot-studio-agentic` as focused entry points.
+Read only the chosen harness guide and original operation skill, not both catalogs.
+The coding assistant is GitHub Copilot in both cases. Original plugin personas,
+slash commands, hooks and tool permissions are not registered by our file installer.
 
-Included hooks, CI and experimental patterns are archival until explicitly
-configured. Do not activate hooks, native dependencies, authentication or
-telemetry merely because bundled files exist. Log concise decisions and evidence;
-do not request/store private chain-of-thought, even if an archived pattern does.
+Resolve all original references from their pinned plugin directory. Interpret
+`${CLAUDE_SKILL_DIR}` as the original skill folder and `${CLAUDE_PLUGIN_ROOT}` as
+its original plugin root; neither is guaranteed to be set in GitHub Copilot.
+Inspect actual CLI help, dependencies and workspace markers before executing.
+
+Included hooks, CI and experimental patterns are archival until configured.
+Do not activate native dependencies, authentication or telemetry merely because
+bundled files exist. Log concise decisions and evidence, never private
+chain-of-thought. Installation grants no tenant access or licenses.
 
 ## Design for an outcome
 
@@ -90,9 +99,10 @@ Record a compact plan in the business project, using its conventions:
 - Typed tool contracts, identity, side effects, errors, idempotency and retries.
 - Scope excluded, demo proof and acceptance cases.
 
-Use deterministic topics/Power Fx/flows for eligibility, arithmetic, confirmation,
+For Standard, use deterministic topics/Power Fx/flows for eligibility, arithmetic, confirmation,
 state transitions and writes. Use AI for interpretation and grounded explanation.
-Start with one agent; add specialists for distinct tools, identity, knowledge,
+For the modern harness, use deterministic tools/workflows for those controls;
+Standard topics and variables do not apply. Start with one agent; add specialists for distinct tools, identity, knowledge,
 evaluation or ownership. Bound delegated hops and tool calls. Avoid accidental
 duplicate tool exposure. Prompt instructions are not transaction or access controls.
 
@@ -149,8 +159,9 @@ and selected heuristics. It is not Microsoft schema, Power Fx, DLP or live valid
 | Published-channel test | Actual deployed UX and effects in the tested channel |
 
 Use original `validate`, `test-auth`, chat and evaluation skills as needed.
-Native checks may require the extension's LSP binary, additional dependencies
-and connection. Never substitute static success for an unavailable native gate.
+Standard native checks may require the extension's LSP binary, additional dependencies
+and connection. Modern agents need their own supported checks; do not substitute Standard LSP
+results or static success for an unavailable native gate.
 Test missing records, malformed output, tool failure, denied access, stale data,
 partial success, duplicates/concurrency and channel differences proportionately.
 

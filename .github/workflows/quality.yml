@@ -1,0 +1,39 @@
+name: PurpleBelt quality
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bundle:
+    name: Bundle / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/verify_bundle.py
+  modern-helpers:
+    name: Microsoft modern helper tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test dependencies outside the pinned snapshot
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/purplebelt-deps"
+          cp vendor/microsoft/copilot-studio-plugin/scripts/package.json vendor/microsoft/copilot-studio-plugin/scripts/package-lock.json "$RUNNER_TEMP/purplebelt-deps/"
+          npm ci --ignore-scripts --prefix "$RUNNER_TEMP/purplebelt-deps" --no-audit --no-fund
+      - name: Run local upstream tests without tenant authentication
+        shell: bash
+        run: NODE_PATH="$RUNNER_TEMP/purplebelt-deps/node_modules" node --test vendor/microsoft/copilot-studio-plugin/scripts/test/*.test.js
