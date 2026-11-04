@@ -70,6 +70,28 @@
 ยังไม่สร้าง target จนกว่าจะระบุ environment และ workspace ที่แน่นอน
 ```
 
+## 6. ออกแบบ hybrid ให้เหมาะกับงาน
+
+```text
+ใช้ copilot-studio-builder ออกแบบระบบทั้งเส้นทางก่อนสร้าง components
+โจทย์: ติดตามข่าวที่ได้รับอนุญาต วิเคราะห์ผลกระทบที่เกี่ยวกับผู้ใช้ แล้วส่ง Teams
+คิดวิธีที่เหมาะสมเอง ไม่ต้องยึดว่าต้องใช้ SharePoint หรือสอง harness
+
+เทียบไม่เกิน 3 แบบ รวม baseline ที่ง่ายที่สุด แล้วแนะนำแบบเดียว
+แบ่งแต่ละขั้นเป็น deterministic rules, bounded prompt หรือ agent reasoning
+ตรวจวิธีเรียกและส่งต่องานจากเอกสารปัจจุบันพร้อมหลักฐานใน environment
+แยก Power Automate, Standard agent flows และ modern Workflows ให้ชัด
+แสดง cost model ทั้งเส้นทาง, latency, ข้อจำกัด และสิ่งที่ยังไม่ทราบ
+กำหนดเงื่อนไขเรียก deep reasoning, cache/batch, retry และ budget ที่บังคับใช้ได้จริง
+ถ้าต้อง async ให้ระบุ job state, claim, completion และป้องกันผลซ้ำ
+ใช้ template ที่ <skill-root>/assets/hybrid-architecture-template.md
+บันทึกแผนที่กรอกแล้วใน business project
+แล้วทำหนึ่ง vertical slice ด้วยข้อมูลสังเคราะห์และวัด baseline เทียบแบบที่เลือก
+```
+
+เปลี่ยนโจทย์เป็นงานของคุณได้ เช่น review เอกสาร, intake, case triage หรือรายงาน
+แผนเป็นคำแนะนำจากข้อจำกัดและหลักฐานที่มี ต้องทดลองเส้นทางจริงก่อนอ้างว่าประหยัดกว่า
+
 ## อัปเดตชุดเดิม
 
 1. อัปเดต checkout ของ PurpleBelt ด้วย `git pull` แล้วรัน integrity checks

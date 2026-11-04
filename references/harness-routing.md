@@ -1,6 +1,12 @@
 # Choose the right build path
 
-Purpose: select the authoring toolkit without mixing runtime schemas.
+Purpose: select the authoring toolkit for each component without mixing runtime schemas.
+
+For whole-system, cost or multi-stage requests, read `hybrid-architecture.md`
+before choosing runtimes. The table below identifies existing workspaces; it
+does not require the whole business system to use one harness. A hybrid design
+may combine deterministic processing, bounded prompts and reasoning without
+creating a Standard agent and a modern agent for every request.
 
 | Observed evidence | Route | Next read |
 |---|---|---|

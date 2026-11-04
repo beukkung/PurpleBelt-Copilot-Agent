@@ -1,6 +1,6 @@
 ---
 name: copilot-studio-builder
-description: Use when a GitHub Copilot user needs to design, build, edit, debug, evaluate, package or demo Microsoft Copilot Studio agents; when working with agent YAML, topics, Power Fx, Adaptive Cards, knowledge, tools, MCP, agent flows or solution imports; or when harness, connector, licensing and DLP differences affect implementation.
+description: Use when a GitHub Copilot user needs to design, build, edit, debug, evaluate, package or demo Microsoft Copilot Studio agents; when working with agent YAML, topics, Power Fx, Adaptive Cards, knowledge, tools, MCP, agent flows or solution imports; or when hybrid architecture, cost-aware routing, workflow handoffs, harness, connector, licensing and DLP differences affect implementation.
 ---
 
 # Copilot Studio Builder
@@ -19,9 +19,15 @@ separate systems. Installation grants no tenant access or licenses.
 2. Locate the business-agent workspace, not this skill's templates. Inspect real
    files and references before choosing native paths. Preserve the existing
    `.mcs.yml` / `.mcs.yaml` format, IDs, metadata and user edits.
-3. Detect harness and orchestration from metadata, UI or a trusted export.
+3. For a whole-system, multi-stage, hybrid or cost/latency request, first read
+   [Hybrid architecture](references/hybrid-architecture.md). Decompose the work,
+   compare up to three feasible designs including a simple baseline, and recommend
+   one using current invocation support, whole-path cost and outcome quality.
+   Do not default to two harnesses or SharePoint glue.
+   Detect each component's harness and orchestration from metadata, UI or a trusted export.
    Read [Harness routing](references/harness-routing.md), then only the matching
    [Standard](references/harness-standard.md) or [agentic](references/harness-agentic.md) guide.
+   Keep native workspaces separate when the selected system spans runtimes.
    Record unknown when unavailable. Copilot in VS Code does not imply the
    business agent uses the GitHub Copilot harness.
 4. Make a capability ledger: allowed/blocked/unknown, evidence, license class,
@@ -52,7 +58,8 @@ especially on Windows or in paths containing spaces.
 
 | Work | Read |
 |---|---|
-| Harness selection | [Routing](references/harness-routing.md) |
+| System design, hybrid, cost and handoffs | [Architecture planner](references/hybrid-architecture.md) and [plan template](assets/hybrid-architecture-template.md) |
+| Per-component harness selection | [Routing](references/harness-routing.md) |
 | Standard native workflow | [Standard](references/harness-standard.md) |
 | Modern skills/tools/PAC workflow | [Agentic](references/harness-agentic.md) |
 | Harness, policy, capabilities | [Environment](references/environment.md) |
@@ -74,7 +81,8 @@ Two complete, unmodified MIT snapshots live under `vendor/microsoft/`:
 | Microsoft Copilot, formerly GitHub Copilot | `copilot-studio-plugin/` | `mcsa-*` |
 
 Use `copilot-studio-standard` or `copilot-studio-agentic` as focused entry points.
-Read only the chosen harness guide and original operation skill, not both catalogs.
+For implementation, read the chosen component's harness guide and operation.
+Load both toolkits only when the selected architecture actually needs both.
 The coding assistant is GitHub Copilot in both cases. Original plugin personas,
 slash commands, hooks and tool permissions are not registered by our file installer.
 
@@ -98,6 +106,8 @@ Record a compact plan in the business project, using its conventions:
 - Source owner, provenance, freshness and retrieval authorization.
 - Typed tool contracts, identity, side effects, errors, idempotency and retries.
 - Scope excluded, demo proof and acceptance cases.
+- For system requests: stage ownership/runtime, verified handoff contracts, bounded
+  reasoning gates, whole-path cost assumptions and a same-input pilot comparison.
 
 For Standard, use deterministic topics/Power Fx/flows for eligibility, arithmetic, confirmation,
 state transitions and writes. Use AI for interpretation and grounded explanation.

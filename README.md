@@ -31,6 +31,7 @@
 |---|---|
 | เปลี่ยนไอเดียเป็น Agent | แปลงโจทย์เป็น user journey, ข้อมูล, tools และเกณฑ์รับงาน |
 | Vibe code แล้วตามแก้ไม่จบ | อ่านไฟล์จริง ใช้ schema ให้ถูก และแก้เป็น diff ที่ตรวจได้ |
+| ออกแบบระบบ hybrid ให้คุ้ม | แบ่งงานเป็น rules, prompts และ reasoning แล้วเทียบต้นทุน เวลา และเส้นทางส่งต่องาน |
 | ทำงานให้ทัน hackathon | เริ่มจาก demo story และหนึ่ง journey ก่อนเพิ่มฟีเจอร์ |
 | ใช้ในองค์กรที่มีข้อจำกัด | แยก connector class, DLP, สิทธิ์ และ capacity ก่อนเลือกทางทำ |
 | Agent บอกสำเร็จทั้งที่งานไม่เกิด | ตรวจผลของแต่ละ action และสถานะจริง แยกจากข้อความที่โมเดลตอบ |
@@ -77,6 +78,12 @@ py scripts/install.py --target "C:\Projects\MyAgent" --harness standard
 **GitHub Copilot ใน VS Code คือผู้ช่วยพัฒนา** ส่วน harness คือ runtime ของ Agent ใน Copilot Studio การมี Copilot หรือ extension ไม่ได้บอกว่า Agent ใช้ harness ไหน
 
 Microsoft ประกาศเปลี่ยนชื่อ GitHub Copilot harness เป็น **Microsoft Copilot harness** เมื่อ 28 ต.ค. 2026; repo ต้นฉบับยังมีชื่อ GHCP/MCS2 อยู่ [อ่านประกาศ](https://www.microsoft.com/en-us/copilot/blog/copilot-studio/the-github-copilot-harness-in-copilot-studio-is-now-the-microsoft-copilot-harness/)
+
+## Let the simple steps stay simple.
+
+PurpleBelt ช่วยคิดทั้งระบบได้: ใช้กฎกรองและลดข้อมูลก่อน เรียก AI ตามความจำเป็น แล้วเลือกวิธีส่งต่องานที่รองรับจริง ทั้ง native workflow, events หรือข้อมูลร่วมกัน ไม่ล็อกว่าต้องใช้ SharePoint หรือสอง harness ทุกครั้ง
+
+ให้ Copilot เสนอได้ไม่เกิน 3 ทางเลือก พร้อมคำแนะนำ เงื่อนไขต้นทุน และแผนทดลองวัดผล [อ่านวิธีวางแผน](references/hybrid-architecture.md) · [ดู prompt พร้อมใช้](docs/PLAYBOOK.md#6-ออกแบบ-hybrid-ให้เหมาะกับงาน)
 
 ## One outcome. A few good moves.
 

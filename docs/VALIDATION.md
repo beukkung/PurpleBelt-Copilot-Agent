@@ -110,3 +110,35 @@ Still unverified: actual tenant creation, authentication, native schema acceptan
 cloud sync, runtime skills, migrated behavior, publication and target-channel UX.
 No Solution ZIP builder or complete unpacked-solution validator was added. The
 new README describes available tooling, not guaranteed deployed outcomes.
+
+## Whole-system hybrid planning — 2026-11-04
+
+Added a system-level architecture guide and a reusable plan template. The Builder
+now decomposes work before per-component harness selection, compares up to three
+feasible designs including a simple baseline, and records invocation support,
+identity, handoff contracts, bounded reasoning and whole-path cost assumptions.
+SharePoint and a second harness are optional design choices. Existing Microsoft
+source bundles and discovery entry counts are unchanged.
+
+Verification for this change:
+
+- **21/21 existing local regression tests passed**, including self-contained
+  installation and resolution of the installed skill references.
+- **198/198 pinned Microsoft files matched** their recorded hashes and byte lengths.
+- Skill frontmatter validation passed; **71 relative Markdown file links** checked
+  with no missing targets. Whitespace check passed for this change.
+- Rechecked official Microsoft pages for Power Automate agent invocation, modern
+  Workflow Agent nodes and modern Preview event triggers on 2026-11-04.
+- A fresh-context baseline already proposed sound architecture alternatives. The
+  updated guide was applied to a news automation scenario in a tenant exposing
+  modern Agent nodes, and to a restricted variant exposing only Power Automate
+  plus the Standard connector. It selected native gated Workflow processing for
+  the former pilot and a Standard-compatible baseline for the latter, retained
+  unknown ingress/bindings as unresolved, and did not claim measured savings.
+  Read-only review found no contradictory invocation guidance or missing local
+  resource targets. This is an application review, not a model benchmark.
+
+No new runtime optimizer, cloud deployment or automatic harness conversion was
+implemented. The skill guides development-time architecture decisions; runtime
+routing requires actual configured components and gates. No tenant trigger,
+throughput, latency, billing reduction or duplicate-effect guarantee was tested.

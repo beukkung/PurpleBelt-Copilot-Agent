@@ -42,6 +42,16 @@ Operation discovery names use `mcsa-*`, avoiding Standard's `mcs-*` collisions.
 The original slash-command installation is host-specific; discovery wrappers load
 instructions, not a plugin command runtime.
 
+## Design multi-stage automation
+
+Read `hybrid-architecture.md` for system-level selection and handoff contracts.
+A modern Workflow with deterministic steps and gated Agent nodes may be simpler
+than cross-harness delegation. Workflows are a distinct authoring surface from
+CLI-agent YAML; inspect a supported actual workflow/export before editing them.
+The Power Automate Copilot Studio connector does not invoke modern agents.
+Event-triggered modern agents are Preview; verify subscription, publish and
+activation. Do not infer these capabilities from a local CLI-agent template.
+
 ## Author with the modern model
 
 Read the original architect and authoritative schema before changing YAML.

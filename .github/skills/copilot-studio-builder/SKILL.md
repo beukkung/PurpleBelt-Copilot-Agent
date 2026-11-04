@@ -1,6 +1,6 @@
 ---
 name: copilot-studio-builder
-description: Use when designing, building, debugging, evaluating or preparing a demo of a Microsoft Copilot Studio agent in GitHub Copilot.
+description: Use when designing, building, debugging, evaluating, planning hybrid workflows or cost-aware orchestration, or preparing a demo of a Microsoft Copilot Studio agent in GitHub Copilot.
 ---
 
 # Copilot Studio Builder

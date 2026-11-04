@@ -1,5 +1,9 @@
 # Workflow engineering
 
+For multi-stage systems or cost optimization, first read `hybrid-architecture.md`
+and record a stage map plus handoff ledger. Keep Power Automate cloud flows,
+Standard agent flows and modern Copilot Studio Workflows distinct.
+
 ## Select a surface
 
 Use a direct permitted connector in a topic for simple reads/actions; an agent
@@ -7,10 +11,18 @@ flow for reusable typed operations; a cloud flow for event/schedule work. Use
 MCP/custom APIs only for a needed approved integration. Confirm the current
 agent trigger, response action and solution membership requirements.
 
-The Standard Microsoft Copilot Studio connector can invoke an agent with
+The Standard-class Microsoft Copilot Studio connector can invoke a published
+**Standard-harness agent** from a Power Automate cloud flow with
 `ExecuteCopilot` or `ExecuteCopilotAsyncV2` (Execute Agent and wait). Verify live
 operation metadata and rights. This is not a blanket entitlement for premium
 actions, AI Builder or another principal's data.
+
+Current Microsoft guidance says this connector does **not** call modern/GHCP
+agents from a Power Automate cloud flow. For modern agents, use a supported
+Copilot Studio Workflow Agent node. Modern agent event triggers are a separate
+Preview surface. Shared-state/event handoff is another design, with two actual
+configured endpoints; it does not imply direct connected-agent compatibility.
+See the dated invocation table and official sources in `hybrid-architecture.md`.
 
 ## Outcome contract
 

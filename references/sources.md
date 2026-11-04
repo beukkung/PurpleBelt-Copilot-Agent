@@ -1,6 +1,6 @@
 # Sources
 
-Reviewed 2026-11-03. Recheck official documentation for changing platform details.
+Reviewed 2026-11-04. Recheck official documentation for changing platform details.
 
 ## Official
 
@@ -26,6 +26,19 @@ Reviewed 2026-11-03. Recheck official documentation for changing platform detail
 - https://learn.microsoft.com/en-us/connectors/wordonlinebusiness/
 - https://learn.microsoft.com/en-us/connectors/visualstudioteamservices/
 - https://learn.microsoft.com/en-us/connectors/commondataserviceforapps/
+
+## Hybrid architecture invocation sources (checked 2026-11-04)
+
+- https://learn.microsoft.com/en-us/power-automate/call-copilot-studio-agent
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/workflows-experience/agent-node-workflow
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/faqs-copilot-harness
+- https://learn.microsoft.com/en-us/microsoft-copilot-studio/flows-overview
+- https://learn.microsoft.com/en-us/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers
+
+The architecture patterns and cost model are independently synthesized design
+guidance, not platform guarantees or measured savings. Invocation support remains
+separate from tenant availability and test evidence.
 
 ## Public reference builds
 
