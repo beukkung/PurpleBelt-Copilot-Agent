@@ -14,7 +14,7 @@ def wrappers(source, harness='all'):
     result = {}
     # Always expose the solution orchestrator; component-specific wrappers remain
     # controlled by --harness. All references are bundled with the main skill.
-    result['one-prompt-solution-builder'] = '\\n'.join([
+    result['one-prompt-solution-builder'] = '\n'.join([
         '---', 'name: one-prompt-solution-builder',
         'description: ' + json.dumps('Use when one GitHub Copilot prompt should orchestrate a complete Copilot Studio solution across agents, workflows, SharePoint, Teams and integrations, with validation and explicit release gates.'),
         '---', '', '# PurpleBelt: One-Prompt Solution Builder', '',
