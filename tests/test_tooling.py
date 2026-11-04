@@ -109,7 +109,7 @@ class InstallerTests(unittest.TestCase):
             main = target / '.github/skills/copilot-studio-builder'
             self.assertTrue((main / 'SKILL.md').exists())
             self.assertTrue((main / 'vendor/microsoft/skills-for-copilot-studio/scripts/schema-lookup.bundle.js').exists())
-            skill_count = sum(len(list((ROOT / 'vendor/microsoft' / repo / 'skills').glob('*/SKILL.md'))) for repo in ('skills-for-copilot-studio', 'copilot-studio-plugin')) + 2
+            skill_count = sum(len(list((ROOT / 'vendor/microsoft' / repo / 'skills').glob('*/SKILL.md'))) for repo in ('skills-for-copilot-studio', 'copilot-studio-plugin')) + 3
             self.assertEqual(len(result['wrappers']), skill_count)
             for name in result['wrappers']:
                 text = (target / '.github/skills' / name / 'SKILL.md').read_text()

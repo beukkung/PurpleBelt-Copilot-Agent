@@ -1,11 +1,11 @@
 ---
 name: copilot-studio-builder
-description: Use when a GitHub Copilot user needs to design, build, edit, debug, evaluate, package or demo Microsoft Copilot Studio agents; when working with agent YAML, topics, Power Fx, Adaptive Cards, knowledge, tools, MCP, agent flows or solution imports; when designing SharePoint sites, lists, libraries, metadata, views and permissions for business workflows; or when hybrid architecture, cost-aware routing, workflow handoffs, harness, connector, licensing and DLP differences affect implementation.
+description: Use when a GitHub Copilot user needs to design, build, edit, debug, evaluate, package or demo Microsoft Copilot Studio agents; when working with agent YAML, topics, Power Fx, Adaptive Cards, knowledge, tools, MCP, agent flows or solution imports; when designing SharePoint sites, lists, libraries, metadata, views and permissions for business workflows; or when hybrid architecture, cost-aware routing, workflow handoffs, harness, connector, licensing and DLP differences affect implementation; or when one prompt should orchestrate an end-to-end solution across agents, flows, Teams and SharePoint.
 ---
 
 # Copilot Studio Builder
 
-Turn a business outcome into the smallest working, verifiable agent. Work in
+Turn a business outcome into the smallest working, verifiable agent or integrated solution. Work in
 the user's language. Use the matching pinned Microsoft toolkit for platform detail
 and this skill for architecture, integration, outcome contracts and delivery.
 
@@ -15,7 +15,7 @@ separate systems. Installation grants no tenant access or licenses.
 
 ## Start here
 
-1. Read project instructions, the requested outcome and the existing design.
+1. Read project instructions, the requested outcome and the existing design.\n   For a one-prompt, whole-solution build across Agent + Workflow + Integrations,\n   first use [One-Prompt Solution Builder](references/one-prompt-solution-builder.md).\n   Continue through supported build/test operations without asking to create each\n   component manually; record unautomatable designer and connection gates.
 2. For SharePoint design, read [SharePoint design](references/sharepoint-design.md)
    and inspect actual site/list/library metadata when available. A pure blueprint
    does not require a cloned agent, known harness or tenant access.
@@ -61,7 +61,7 @@ especially on Windows or in paths containing spaces.
 
 | Work | Read |
 |---|---|
-| SharePoint sites, lists, libraries, UX and access | [SharePoint design](references/sharepoint-design.md) and [blueprint template](assets/sharepoint-blueprint-template.md) |
+| One prompt -> multi-component design, generation, validation, release gates | [One-Prompt orchestration](references/one-prompt-solution-builder.md) and [build-plan template](assets/one-prompt-solution-template.md) |\n| SharePoint sites, lists, libraries, UX and access | [SharePoint design](references/sharepoint-design.md) and [blueprint template](assets/sharepoint-blueprint-template.md) |
 | System design, hybrid, cost and handoffs | [Architecture planner](references/hybrid-architecture.md) and [plan template](assets/hybrid-architecture-template.md) |
 | Per-component harness selection | [Routing](references/harness-routing.md) |
 | Standard native workflow | [Standard](references/harness-standard.md) |
@@ -84,7 +84,7 @@ Two complete, unmodified MIT snapshots live under `vendor/microsoft/`:
 | Standard | `skills-for-copilot-studio/` | `mcs-*` |
 | Microsoft Copilot, formerly GitHub Copilot | `copilot-studio-plugin/` | `mcsa-*` |
 
-Use `copilot-studio-standard` or `copilot-studio-agentic` as focused entry points.
+Use `one-prompt-solution-builder` for orchestration of end-to-end builds, and\n`copilot-studio-standard` or `copilot-studio-agentic` as focused native entry points.
 For implementation, read the chosen component's harness guide and operation.
 Load both toolkits only when the selected architecture actually needs both.
 The coding assistant is GitHub Copilot in both cases. Original plugin personas,

@@ -12,6 +12,18 @@ def wrappers(source, harness='all'):
         raise ValueError('Unknown harness profile: ' + harness)
     vendor = Path(source) / 'vendor/microsoft/skills-for-copilot-studio'
     result = {}
+    # Always expose the solution orchestrator; component-specific wrappers remain
+    # controlled by --harness. All references are bundled with the main skill.
+    result['one-prompt-solution-builder'] = '\\n'.join([
+        '---', 'name: one-prompt-solution-builder',
+        'description: ' + json.dumps('Use when one GitHub Copilot prompt should orchestrate a complete Copilot Studio solution across agents, workflows, SharePoint, Teams and integrations, with validation and explicit release gates.'),
+        '---', '', '# PurpleBelt: One-Prompt Solution Builder', '',
+        'Read `../copilot-studio-builder/SKILL.md` and `../copilot-studio-builder/references/one-prompt-solution-builder.md` first.',
+        'Use `../copilot-studio-builder/assets/one-prompt-solution-template.md` for a build plan in the business project.',
+        'Resolve paths relative to this file. Select only the relevant pinned Microsoft skills after identifying each component harness.',
+        'One prompt is a continuous development workflow, not proof of zero-touch cloud deployment.',
+        'Do not invent workflow APIs, cloud resource identifiers, connections or successful publication.', '',
+    ])
     for path in sorted((vendor / 'skills').glob('*/SKILL.md')) if harness in {'all', 'standard'} else []:
         name = path.parent.name
         wrapper_name = 'mcs-' + name

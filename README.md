@@ -30,6 +30,7 @@
 | อยากทำอะไร | PurpleBelt ช่วยอย่างไร |
 |---|---|
 | เปลี่ยนไอเดียเป็น Agent | แปลงโจทย์เป็น user journey, ข้อมูล, tools และเกณฑ์รับงาน |
+| **One-Prompt Solution Builder** | สั่งโจทย์เดียวแล้วให้ Copilot วางแผนและสร้าง Agent + Workflow + Integration ที่ทำได้จริง พร้อมระบุขั้นตอน tenant ที่ยังต้องตั้งค่า |
 | Vibe code แล้วตามแก้ไม่จบ | อ่านไฟล์จริง ใช้ schema ให้ถูก และแก้เป็น diff ที่ตรวจได้ |
 | ออกแบบ SharePoint ให้ใช้ทำงานได้จริง | วาง List/Library, คอลัมน์, views, index, สิทธิ์ และหน้าใช้งาน พร้อมเชื่อม Agent/Workflow |
 | ออกแบบระบบ hybrid ให้คุ้ม | แบ่งงานเป็น rules, prompts และ reasoning แล้วเทียบต้นทุน เวลา และเส้นทางส่งต่องาน |
@@ -80,6 +81,22 @@ py scripts/install.py --target "C:\Projects\MyAgent" --harness standard
 
 Microsoft ประกาศเปลี่ยนชื่อ GitHub Copilot harness เป็น **Microsoft Copilot harness** เมื่อ 28 ต.ค. 2026; repo ต้นฉบับยังมีชื่อ GHCP/MCS2 อยู่ [อ่านประกาศ](https://www.microsoft.com/en-us/copilot/blog/copilot-studio/the-github-copilot-harness-in-copilot-studio-is-now-the-microsoft-copilot-harness/)
 
+## One prompt. Multiple components. Evidence at every step.
+
+ต้องการระบบ **News -> AI analysis -> Teams**? เรียก `one-prompt-solution-builder` ใน GitHub Copilot Agent Mode แล้วให้มันเลือก Flow, Agent และการเชื่อมต่อที่จำเป็น **โดยไม่ต้องมาสั่งสร้างทีละชิ้น**:
+
+```text
+ใช้ one-prompt-solution-builder สร้าง Financial News Intelligence
+ตรวจข่าวจากแหล่งที่องค์กรอนุญาตทุก 30 นาที กรองข่าวซ้ำ
+วิเคราะห์ผลกระทบต่อหุ้นในพอร์ตด้วยข้อมูลและแหล่งอ้างอิงที่ตรวจสอบได้
+ส่งเฉพาะข่าวสำคัญเข้า Microsoft Teams และเก็บประวัติถ้าเหมาะสม
+เลือก architecture เอง สร้างทุก component ที่ tooling รองรับ ทดสอบ happy/error path
+ถ้าสร้าง Workflow จาก VS Code ไม่ได้ ให้เตรียม designer-ready build sheet
+รายงาน Generated / Synced / Published / Tenant-tested แยกกัน อย่าอ้างว่า deploy แล้วถ้ายังไม่ทำ
+```
+
+หนึ่ง prompt เป็น **เป้าหมายของ orchestration** ไม่ใช่การรับประกัน Zero-Touch Deployment: Studio Workflow canvas, API/provider permissions, connector consent และ Teams channel tests อาจต้องทำใน tenant ด้วยเครื่องมือหรือ UI ที่รองรับ [คู่มือการทำงาน](references/one-prompt-solution-builder.md) · [Playbook](docs/PLAYBOOK.md#8-one-prompt-solution-builder)
+
 ## Let the simple steps stay simple.
 
 PurpleBelt ช่วยคิดทั้งระบบได้: ใช้กฎกรองและลดข้อมูลก่อน เรียก AI ตามความจำเป็น แล้วเลือกวิธีส่งต่องานที่รองรับจริง ทั้ง native workflow, events หรือข้อมูลร่วมกัน ไม่ล็อกว่าต้องใช้ SharePoint หรือสอง harness ทุกครั้ง
@@ -115,7 +132,7 @@ PurpleBelt ช่วยคิดทั้งระบบได้: ใช้ก�
 <summary><strong>What's inside — เปิดดูรายละเอียด</strong></summary>
 
 - **39 original Microsoft skills:** 31 Standard + 8 modern, ไม่แก้ไฟล์ต้นฉบับ
-- **42 discovery entries** เมื่อใช้ `all`: Builder + 2 harness adapters + 39 operation wrappers
+- **43 discovery entries** เมื่อใช้ `all`: Builder + One-Prompt orchestrator + 2 harness adapters + 39 operation wrappers
 - **8 original specialist guides** รวมทั้งสอง repo; installer ไม่ได้ลงทะเบียนเป็น custom-agent personas
 - **198 original upstream files** พร้อม commit และ hash ทุกไฟล์ใน lock manifests
 - Schema references, templates, patterns, helper scripts และชุดทดสอบต้นฉบับ

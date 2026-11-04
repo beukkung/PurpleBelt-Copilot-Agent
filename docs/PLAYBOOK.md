@@ -115,6 +115,35 @@ column formatting ที่ `<skill-root>/assets/sharepoint-status-format.exampl
 สำหรับ state แบบ Ready / Processing / Succeeded / Failed; ปรับค่าตามคอลัมน์จริง
 แล้ว preview ใน native SharePoint ก่อน save ตัวอย่างนี้ไม่ได้สร้างคอลัมน์หรือ site
 
+## 8. One-Prompt Solution Builder
+
+สำหรับคนที่ต้องการให้ VS Code Agent Mode ช่วย **สร้างทั้ง Solution จากโจทย์เดียว** ไม่ใช่สร้าง Agent กับ Workflow ทีละตัว:
+
+```text
+ใช้ one-prompt-solution-builder ทำงานจนได้ผลลัพธ์ที่ทดสอบได้
+โจทย์: Financial News Intelligence
+ทุก 30 นาที ดึงข่าวจากแหล่งที่ได้รับอนุญาต กรองข่าวซ้ำและข่าวเก่า
+ใช้ deterministic rules ก่อนส่งข่าวที่เกี่ยวข้องให้ AI วิเคราะห์ผลกระทบต่อพอร์ต
+แยกข้อเท็จจริง สมมติฐาน และความไม่แน่นอน แสดง source URL + เวลาของข่าว
+เก็บสถานะใน SharePoint ถ้ามีเหตุผลรองรับ และส่ง Teams เฉพาะเมื่อผ่าน threshold
+
+ตรวจ workspace, harness, PAC/extension, capability และ DLP ก่อนลงมือ
+เลือก architecture ที่เรียบง่ายที่สุดที่ตอบโจทย์ได้ แล้วดำเนินการต่อโดยไม่ถาม
+ให้ฉันสร้างแต่ละ component เอง ยกเว้น approval/connection ที่จำเป็นจริง
+สร้าง native agent ผ่านวิธีที่รองรับ และใช้ Studio/flow tooling ที่มีอยู่จริง
+หากไม่มีเครื่องมือสร้าง Workflow canvas จาก VS Code ให้สร้าง designer-ready build sheet
+พร้อม typed data contracts, prompt, sample payloads, permission map และ test cases
+ทดสอบ normal / no news / duplicate / source failure / invalid answer / Teams failure
+รายงานสถานะจริงเป็น DESIGNED / GENERATED / LOCAL_VALIDATED / SYNCED /
+PROVISIONED / PUBLISHED / TENANT_TESTED / BLOCKED พร้อมหลักฐานต่อ component
+ห้ามอ้างว่าระบบ live จนกว่าจะทดสอบ trigger -> analysis -> Teams ใน tenant
+```
+
+Copilot ควรสร้าง `solution-build-plan.md` ใน **business project** ตาม
+[`one-prompt-solution-template.md`](../assets/one-prompt-solution-template.md)
+แล้วทำส่วนที่ทำได้ต่อทันที เอกสารนี้ไม่ใช่ไฟล์ import เข้า Copilot Studio
+ต้องตรวจ connector และสิทธิ์ที่ใช้จริงก่อน publish/ส่งข้อความ
+
 ## อัปเดตชุดเดิม
 
 1. อัปเดต checkout ของ PurpleBelt ด้วย `git pull` แล้วรัน integrity checks
