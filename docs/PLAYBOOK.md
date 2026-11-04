@@ -92,6 +92,29 @@
 เปลี่ยนโจทย์เป็นงานของคุณได้ เช่น review เอกสาร, intake, case triage หรือรายงาน
 แผนเป็นคำแนะนำจากข้อจำกัดและหลักฐานที่มี ต้องทดลองเส้นทางจริงก่อนอ้างว่าประหยัดกว่า
 
+## 7. ออกแบบ SharePoint ทั้งข้อมูลและหน้าใช้งาน
+
+```text
+ใช้ copilot-studio-builder ออกแบบ SharePoint สำหรับ [ผลลัพธ์ที่ต้องการ]
+อ่าน SharePoint design guide และทำ blueprint ใน business project
+ตรวจของเดิมจาก metadata/export ที่มี อย่าเดา site URL หรือ internal field names
+
+เลือก Site, Lists, Document Libraries และ content types เท่าที่จำเป็น
+ทำ data dictionary พร้อมชนิดข้อมูล required/default/validation และ business key
+ออกแบบ permission matrix, queries, indexes และ views ตามปริมาณข้อมูลและผู้ใช้
+เสนอ home page, navigation, native web parts และ forms ให้คนทำงานสะดวก
+ถ้ามีประโยชน์ ให้สร้าง column/view formatting JSON พร้อมบอกจุดที่นำไปใช้
+เชื่อม Agent/Workflow ผ่าน operation และ identity ที่ตรวจได้จริง
+แสดงขั้นตอน provisioning ตามเครื่องมือที่องค์กรอนุญาตและเกณฑ์ทดสอบ
+แยก proposed / generated / provisioned / tenant-tested ให้ชัด
+เริ่มจาก blueprint ได้ แม้ยังไม่มี agent workspace หรือสิทธิ์สร้าง site
+```
+
+ใช้ `<skill-root>/assets/sharepoint-blueprint-template.md` เป็นแบบแผน มีตัวอย่าง
+column formatting ที่ `<skill-root>/assets/sharepoint-status-format.example.json`
+สำหรับ state แบบ Ready / Processing / Succeeded / Failed; ปรับค่าตามคอลัมน์จริง
+แล้ว preview ใน native SharePoint ก่อน save ตัวอย่างนี้ไม่ได้สร้างคอลัมน์หรือ site
+
 ## อัปเดตชุดเดิม
 
 1. อัปเดต checkout ของ PurpleBelt ด้วย `git pull` แล้วรัน integrity checks

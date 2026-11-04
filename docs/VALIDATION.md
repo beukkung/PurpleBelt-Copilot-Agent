@@ -142,3 +142,37 @@ No new runtime optimizer, cloud deployment or automatic harness conversion was
 implemented. The skill guides development-time architecture decisions; runtime
 routing requires actual configured components and gates. No tenant trigger,
 throughput, latency, billing reduction or duplicate-effect guarantee was tested.
+
+## SharePoint design support — 2026-11-04
+
+Added a SharePoint Online design reference, blueprint template and sample status
+column-formatting JSON. The Builder now routes SharePoint design without requiring
+an agent workspace or tenant access. It covers containers, data dictionaries,
+content types, permissions, query/index/view planning, native pages/forms,
+document lifecycle, agent/workflow integration and an implementation handoff.
+
+Checks actually run:
+
+- **21/21 local regression tests passed**, including installed-bundle reference
+  resolution and self-contained copying of references/assets.
+- **198/198 pinned Microsoft files matched** byte length and both recorded hashes.
+- Skill frontmatter validation passed; **76 relative Markdown file links** checked
+  with no missing file targets. Whitespace check passed.
+- The example column-formatting asset parsed as JSON. Its schema URI is declared;
+  remote schema validation and native SharePoint rendering were not performed.
+- Reviewed primary Microsoft information-architecture, permissions/scope, indexing,
+  formatting and site-script documentation. Version-sensitive claims are linked
+  and dated in the reference and must be rechecked before implementation.
+- Fresh-context baseline and updated-skill applications considered 30,000 documents,
+  20 departments and service-owned ingestion. The updated application produced a
+  library/list design, proposed dictionary, access/query plan and native handoff;
+  rejected views-as-security and pagination-as-threshold relief; and kept actual
+  metadata, identities and provisioning evidence pending. A second design-only
+  situation progressed without a cloned agent or invented tenant URL/IDs.
+  Read-only review found no contradictory prerequisite or missing local resource.
+
+This is design/application evidence, not a comparative model benchmark. No site,
+list, library, view, permission or flow was created in a tenant. No permission,
+scale, connector, schema acceptance or native UI test was performed. The new
+assets are a blueprint and formatting example, not an executable provisioning
+package. Discovery counts and the two unmodified upstream snapshots are unchanged.

@@ -31,6 +31,7 @@
 |---|---|
 | เปลี่ยนไอเดียเป็น Agent | แปลงโจทย์เป็น user journey, ข้อมูล, tools และเกณฑ์รับงาน |
 | Vibe code แล้วตามแก้ไม่จบ | อ่านไฟล์จริง ใช้ schema ให้ถูก และแก้เป็น diff ที่ตรวจได้ |
+| ออกแบบ SharePoint ให้ใช้ทำงานได้จริง | วาง List/Library, คอลัมน์, views, index, สิทธิ์ และหน้าใช้งาน พร้อมเชื่อม Agent/Workflow |
 | ออกแบบระบบ hybrid ให้คุ้ม | แบ่งงานเป็น rules, prompts และ reasoning แล้วเทียบต้นทุน เวลา และเส้นทางส่งต่องาน |
 | ทำงานให้ทัน hackathon | เริ่มจาก demo story และหนึ่ง journey ก่อนเพิ่มฟีเจอร์ |
 | ใช้ในองค์กรที่มีข้อจำกัด | แยก connector class, DLP, สิทธิ์ และ capacity ก่อนเลือกทางทำ |
@@ -84,6 +85,12 @@ Microsoft ประกาศเปลี่ยนชื่อ GitHub Copilot har
 PurpleBelt ช่วยคิดทั้งระบบได้: ใช้กฎกรองและลดข้อมูลก่อน เรียก AI ตามความจำเป็น แล้วเลือกวิธีส่งต่องานที่รองรับจริง ทั้ง native workflow, events หรือข้อมูลร่วมกัน ไม่ล็อกว่าต้องใช้ SharePoint หรือสอง harness ทุกครั้ง
 
 ให้ Copilot เสนอได้ไม่เกิน 3 ทางเลือก พร้อมคำแนะนำ เงื่อนไขต้นทุน และแผนทดลองวัดผล [อ่านวิธีวางแผน](references/hybrid-architecture.md) · [ดู prompt พร้อมใช้](docs/PLAYBOOK.md#6-ออกแบบ-hybrid-ให้เหมาะกับงาน)
+
+## Design the workspace behind the agent.
+
+ให้ PurpleBelt ช่วยออกแบบ SharePoint ตั้งแต่โครงสร้างข้อมูลถึงหน้าที่คนใช้ได้: แยก List กับ Document Library, ทำ data dictionary, วาง views/index, สิทธิ์และวงจรเอกสาร แล้วกำหนดวิธีเชื่อม Agent/Workflow
+
+ได้ blueprint พร้อมขั้นตอนสร้างผ่านวิธีที่อนุญาต และสร้าง JSON แต่งคอลัมน์หรือ view ตามโจทย์ โดยเริ่มจาก native SharePoint ก่อนเพิ่มเครื่องมืออื่น [SharePoint design guide](references/sharepoint-design.md) · [ตัวอย่างคำสั่ง](docs/PLAYBOOK.md#7-ออกแบบ-sharepoint-ทั้งข้อมูลและหน้าใช้งาน)
 
 ## One outcome. A few good moves.
 

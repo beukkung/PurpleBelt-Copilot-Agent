@@ -40,6 +40,21 @@ The architecture patterns and cost model are independently synthesized design
 guidance, not platform guarantees or measured savings. Invocation support remains
 separate from tenant availability and test evidence.
 
+## SharePoint design references (checked 2026-11-04)
+
+- https://learn.microsoft.com/en-us/sharepoint/information-architecture-modern-experience
+- https://learn.microsoft.com/en-us/sharepoint/modern-experience-sharing-permissions
+- https://learn.microsoft.com/en-us/sharepoint/manage-permission-scope
+- https://learn.microsoft.com/en-us/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits
+- https://support.microsoft.com/en-us/sharepoint/data-and-lists/add-an-index-to-a-list-or-library-column
+- https://learn.microsoft.com/en-us/troubleshoot/sharepoint/lists-and-libraries/fails-filtering-sharepoint-column
+- https://learn.microsoft.com/en-us/sharepoint/dev/declarative-customization/column-formatting
+- https://learn.microsoft.com/en-us/sharepoint/dev/declarative-customization/view-formatting
+- https://learn.microsoft.com/en-us/sharepoint/dev/declarative-customization/site-design-overview
+
+The SharePoint blueprint is design guidance. Generated formatting JSON is a
+separate artifact from native provisioning scripts or Copilot Studio YAML.
+
 ## Public reference builds
 
 Event: https://devblogs.microsoft.com/powerplatform/agent-academy-hackathon-winners/

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "attributes": {
+    "class": "=if(@currentField == 'Succeeded', 'sp-field-severity--good', if(@currentField == 'Failed', 'sp-field-severity--blocked', if(@currentField == 'Processing', 'sp-field-severity--warning', 'sp-field-severity--low')))"
+  },
+  "style": {
+    "padding": "4px 8px",
+    "border-radius": "4px"
+  },
+  "children": [
+    {
+      "elmType": "span",
+      "txtContent": "=if(@currentField == '', 'Not set', @currentField)"
+    }
+  ]
+}

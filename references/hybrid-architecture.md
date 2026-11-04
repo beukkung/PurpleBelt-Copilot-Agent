@@ -39,8 +39,9 @@ transport without checking whether it solves the real problem.
 These are families, not fixed templates. Alternatives include sharing a verified
 reusable tool/workflow across independently useful agents; scheduled bounded
 batch processing; or an approved documented API invocation when its exact target,
-auth and policy are confirmed. A queue/service is a candidate only when already
-permitted and licensed. Do not add premium HTTP, an external MCP, a personal
+auth and policy are confirmed. For a selected SharePoint data layer, read
+`sharepoint-design.md` for container/field design, access boundaries and a realistic
+query plan. A queue/service is a candidate only when already permitted and licensed. Do not add premium HTTP, an external MCP, a personal
 account or a proxy to route around restrictions. A single SharePoint list record
 can be enough; files are useful for actual document payloads, not mandatory glue.
 

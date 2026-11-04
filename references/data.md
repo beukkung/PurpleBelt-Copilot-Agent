@@ -1,5 +1,9 @@
 # Data, knowledge and personalization
 
+For SharePoint storage, site, List/Library, metadata, view or access design, read
+`sharepoint-design.md` and use its blueprint template. This guide covers retrieval
+and personalization rather than provisioning a SharePoint workspace.
+
 ## Retrieval contract
 
 Record source owner, stable ID, authorization, needed fields, freshness SLA,

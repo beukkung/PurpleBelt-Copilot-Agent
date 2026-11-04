@@ -1,6 +1,6 @@
 ---
 name: copilot-studio-builder
-description: Use when a GitHub Copilot user needs to design, build, edit, debug, evaluate, package or demo Microsoft Copilot Studio agents; when working with agent YAML, topics, Power Fx, Adaptive Cards, knowledge, tools, MCP, agent flows or solution imports; or when hybrid architecture, cost-aware routing, workflow handoffs, harness, connector, licensing and DLP differences affect implementation.
+description: Use when a GitHub Copilot user needs to design, build, edit, debug, evaluate, package or demo Microsoft Copilot Studio agents; when working with agent YAML, topics, Power Fx, Adaptive Cards, knowledge, tools, MCP, agent flows or solution imports; when designing SharePoint sites, lists, libraries, metadata, views and permissions for business workflows; or when hybrid architecture, cost-aware routing, workflow handoffs, harness, connector, licensing and DLP differences affect implementation.
 ---
 
 # Copilot Studio Builder
@@ -16,8 +16,11 @@ separate systems. Installation grants no tenant access or licenses.
 ## Start here
 
 1. Read project instructions, the requested outcome and the existing design.
-2. Locate the business-agent workspace, not this skill's templates. Inspect real
-   files and references before choosing native paths. Preserve the existing
+2. For SharePoint design, read [SharePoint design](references/sharepoint-design.md)
+   and inspect actual site/list/library metadata when available. A pure blueprint
+   does not require a cloned agent, known harness or tenant access.
+   For native agent work, locate the business-agent workspace, not this skill's
+   templates. Inspect real files and references before choosing native paths. Preserve the existing
    `.mcs.yml` / `.mcs.yaml` format, IDs, metadata and user edits.
 3. For a whole-system, multi-stage, hybrid or cost/latency request, first read
    [Hybrid architecture](references/hybrid-architecture.md). Decompose the work,
@@ -58,6 +61,7 @@ especially on Windows or in paths containing spaces.
 
 | Work | Read |
 |---|---|
+| SharePoint sites, lists, libraries, UX and access | [SharePoint design](references/sharepoint-design.md) and [blueprint template](assets/sharepoint-blueprint-template.md) |
 | System design, hybrid, cost and handoffs | [Architecture planner](references/hybrid-architecture.md) and [plan template](assets/hybrid-architecture-template.md) |
 | Per-component harness selection | [Routing](references/harness-routing.md) |
 | Standard native workflow | [Standard](references/harness-standard.md) |
@@ -106,6 +110,9 @@ Record a compact plan in the business project, using its conventions:
 - Source owner, provenance, freshness and retrieval authorization.
 - Typed tool contracts, identity, side effects, errors, idempotency and retries.
 - Scope excluded, demo proof and acceptance cases.
+- For SharePoint: container/field dictionary, permissions, query/index/view plan,
+  native page/form UX, lifecycle and a supported implementation handoff. Views
+  and formatting are presentation; access must be enforced by the backend.
 - For system requests: stage ownership/runtime, verified handoff contracts, bounded
   reasoning gates, whole-path cost assumptions and a same-input pilot comparison.
 
