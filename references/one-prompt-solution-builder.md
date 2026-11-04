@@ -51,6 +51,19 @@ Prioritize:
 
 For scheduled external-news solutions, require: allowed provider/API and rate limits; published vs ingested timestamp; stable story ID or canonical URL; dedup across repeated polls; source references; stale/unverified-news handling; bounded token/credit use; portfolio data scoping; a suppression/escalation policy; and one notification decision per business key. Never call a snapshot 'real-time' or present news-derived financial predictions as facts.
 
+## Diagram-first implementation handoff
+
+Before component generation, read [Diagram design](diagram-design.md) and create
+a GitHub-rendered Mermaid **architecture/build diagram and runtime workflow diagram**
+in the business project's `docs/diagrams/workflow.md` (one simple diagram if it
+is truly a single-component flow). Use the reference
+[workflow diagrams](../docs/diagrams/README.md). Link from the project's README
+when appropriate. Show trigger, deterministic filters, bounded AI/agent, external
+integrations, identity/authorization gates, failure/empty/duplicate branches,
+tenant-only steps and separate verified effects. The diagram is a maintained
+design artifact, never evidence that the Workflow is deployed. Keep it aligned
+with the build sheet, generated components and acceptance tests.
+
 ## 3. Build autonomously *within* supported boundaries
 
 1. Inventory existing authorized resources before creating new ones. Preserve user edits, IDs, solution layers and cloud state; inspect drift before applying changes.

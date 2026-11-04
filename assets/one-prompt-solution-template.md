@@ -21,6 +21,17 @@
 - Alternatives rejected and why:
 - Estimated credits/cost assumptions and measurement plan:
 
+## Workflow diagram design
+
+- Editable architecture/build Mermaid: `docs/diagrams/workflow.md` (project-relative)
+- Editable runtime Mermaid: same file; show trigger, empty/duplicate/failure and delivery checks
+- Diagram status: PROPOSED / VERIFIED AGAINST DESIGNER / VERIFIED AGAINST TENANT RUN
+- Unbound connector and tenant steps visibly labeled:
+- Architecture/diagram change linked to test and build-sheet update:
+
+These Markdown diagrams render in GitHub; they are not executable workflows.
+See [diagram-design guide](../references/diagram-design.md) for conventions.
+
 ## Component and capability ledger
 
 | Component | Runtime / design surface | Input -> output | Build method | Capability evidence | Status | Owner/blocker |

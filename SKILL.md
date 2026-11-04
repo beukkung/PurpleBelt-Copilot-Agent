@@ -15,7 +15,11 @@ separate systems. Installation grants no tenant access or licenses.
 
 ## Start here
 
-1. Read project instructions, the requested outcome and the existing design.\n   For a one-prompt, whole-solution build across Agent + Workflow + Integrations,\n   first use [One-Prompt Solution Builder](references/one-prompt-solution-builder.md).\n   Continue through supported build/test operations without asking to create each\n   component manually; record unautomatable designer and connection gates.
+1. Read project instructions, the requested outcome and the existing design.
+   For a one-prompt, whole-solution build across Agent + Workflow + Integrations,
+   first use [One-Prompt Solution Builder](references/one-prompt-solution-builder.md).
+   Continue through supported build/test operations without asking to create each
+   component manually; record unautomatable designer and connection gates.
 2. For SharePoint design, read [SharePoint design](references/sharepoint-design.md)
    and inspect actual site/list/library metadata when available. A pure blueprint
    does not require a cloned agent, known harness or tenant access.
@@ -38,7 +42,7 @@ separate systems. Installation grants no tenant access or licenses.
    classification, policy, authentication and capacity separately.
 5. Choose the mode below. Continue reversible local work with explicit assumptions;
    ask only for information that blocks a dependent action.
-6. For a new Standard agent, create a minimal Studio agent and clone through the
+6. For a multi-component solution, create or update an editable GitHub Mermaid\n   diagram before native authoring. Read [Diagram design](references/diagram-design.md),\n   show workflow boundaries, branching, error/retry and tenant gates. The diagram\n   is documentation, not an executable Studio flow.\n7. For a new Standard agent, create a minimal Studio agent and clone through the
    supported extension, or use a verified toolkit creation path. Without a real
    export, produce design/contracts and label native drafts unbound. Never
    fabricate component IDs, operation IDs, connection GUIDs or import readiness.
@@ -68,6 +72,7 @@ especially on Windows or in paths containing spaces.
 | Modern skills/tools/PAC workflow | [Agentic](references/harness-agentic.md) |
 | Harness, policy, capabilities | [Environment](references/environment.md) |
 | Standard YAML, topics, tools, cards, CLI | [Authoring](references/authoring.md) |
+| Editable workflow diagrams, architecture boundaries and GitHub Mermaid | [Diagram design](references/diagram-design.md) and [examples](docs/diagrams/README.md) |
 | Flow contracts, writes, failures | [Workflow engineering](references/workflows.md) |
 | RAG, personalization, live data | [Data and knowledge](references/data.md) |
 | Diagnosis and test evidence | [Verification](references/verification.md) |

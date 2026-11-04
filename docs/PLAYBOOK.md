@@ -115,6 +115,23 @@ column formatting ที่ `<skill-root>/assets/sharepoint-status-format.exampl
 สำหรับ state แบบ Ready / Processing / Succeeded / Failed; ปรับค่าตามคอลัมน์จริง
 แล้ว preview ใน native SharePoint ก่อน save ตัวอย่างนี้ไม่ได้สร้างคอลัมน์หรือ site
 
+## Workflow diagrams that render in GitHub
+
+After selecting the architecture, instruct GitHub Copilot Agent Mode to maintain
+`docs/diagrams/workflow.md` in the **business project**, using Mermaid flowcharts
+for the build/release boundary and the actual runtime decisions. The diagram is
+part of the delivery artifact, not a screenshot or a native workflow definition.
+Examples: [PurpleBelt diagrams](diagrams/README.md) and
+[Diagram design guide](../references/diagram-design.md).
+
+```text
+สร้างและอัปเดต workflow diagram เป็น Mermaid ใน docs/diagrams/workflow.md
+ต้องมีภาพของ architecture/build gates กับภาพของ runtime workflow
+แสดง trigger, logic, bounded AI, Teams, ข้อมูล, no-news, dedup, retry, permission
+ใช้ภาพเป็น documentation เท่านั้น ไม่ถือว่าสร้าง Copilot Studio Workflow แล้ว
+ลิงก์ diagram จาก README และตรวจว่า diagram ตรงกับ build sheet + test cases
+```
+
 ## 8. One-Prompt Solution Builder
 
 สำหรับคนที่ต้องการให้ VS Code Agent Mode ช่วย **สร้างทั้ง Solution จากโจทย์เดียว** ไม่ใช่สร้าง Agent กับ Workflow ทีละตัว:
@@ -128,6 +145,7 @@ column formatting ที่ `<skill-root>/assets/sharepoint-status-format.exampl
 เก็บสถานะใน SharePoint ถ้ามีเหตุผลรองรับ และส่ง Teams เฉพาะเมื่อผ่าน threshold
 
 ตรวจ workspace, harness, PAC/extension, capability และ DLP ก่อนลงมือ
+สร้าง Mermaid architecture/runtime workflow diagrams ลง docs/diagrams/workflow.md ด้วย
 เลือก architecture ที่เรียบง่ายที่สุดที่ตอบโจทย์ได้ แล้วดำเนินการต่อโดยไม่ถาม
 ให้ฉันสร้างแต่ละ component เอง ยกเว้น approval/connection ที่จำเป็นจริง
 สร้าง native agent ผ่านวิธีที่รองรับ และใช้ Studio/flow tooling ที่มีอยู่จริง

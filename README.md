@@ -97,6 +97,28 @@ Microsoft ประกาศเปลี่ยนชื่อ GitHub Copilot har
 
 หนึ่ง prompt เป็น **เป้าหมายของ orchestration** ไม่ใช่การรับประกัน Zero-Touch Deployment: Studio Workflow canvas, API/provider permissions, connector consent และ Teams channel tests อาจต้องทำใน tenant ด้วยเครื่องมือหรือ UI ที่รองรับ [คู่มือการทำงาน](references/one-prompt-solution-builder.md) · [Playbook](docs/PLAYBOOK.md#8-one-prompt-solution-builder)
 
+## See the workflow before you build
+
+PurpleBelt shows both the **developer build journey** and the **business workflow**. Diagrams below are editable Mermaid documentation, **not a claim of deployed cloud resources**.
+
+```mermaid
+flowchart LR
+  P["One business prompt"] --> A["Discover and design"]
+  A --> C["Agent + Workflow contracts"]
+  C --> V["Generate + validate supported components"]
+  V --> G{"Tenant connections ready?"}
+  G -->|Yes| T["Sync, publish and test"]
+  G -->|No| H["Designer-ready steps + UNBOUND"]
+  T --> E["Verified Teams / business outcome"]
+  H --> E2["Pending implementation handoff"]
+  classDef accent fill:#ede9fe,stroke:#7c3aed,color:#3b0764,stroke-width:2px;
+  classDef gate fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:2px;
+  class P,E accent;
+  class G gate;
+```
+
+**<a href="docs/diagrams/README.md">Open detailed workflow diagrams</a>** — Builder design/build boundaries and the Financial News Intelligence runtime including AI analysis, source validation, duplicate detection and Teams delivery gates. Use [Diagram Design guidance](references/diagram-design.md) to produce an updated diagram for each new solution.
+
 ## Let the simple steps stay simple.
 
 PurpleBelt ช่วยคิดทั้งระบบได้: ใช้กฎกรองและลดข้อมูลก่อน เรียก AI ตามความจำเป็น แล้วเลือกวิธีส่งต่องานที่รองรับจริง ทั้ง native workflow, events หรือข้อมูลร่วมกัน ไม่ล็อกว่าต้องใช้ SharePoint หรือสอง harness ทุกครั้ง
